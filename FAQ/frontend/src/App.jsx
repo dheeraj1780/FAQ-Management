@@ -1,12 +1,25 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Homepage, Questions, ViewQuestion } from "./pages";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+    children: [
+      {
+        index: true,
+        element: <Questions />,
+      },
+      {
+        path: "view",
+        element: <ViewQuestion />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <h1>FAQ frontend</h1>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
