@@ -5,7 +5,7 @@ const questions = () => {
     <div>
       <h1>this is homepage for viewer section</h1>
       <button type="button" className="btn">
-        view quesstions
+        view questions
       </button>
     </div>
   );
