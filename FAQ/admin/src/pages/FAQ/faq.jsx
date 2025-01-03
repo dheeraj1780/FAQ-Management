@@ -1,7 +1,7 @@
 import React from "react";
 
 const faq = () => {
-  return <div>faq</div>;
+  return <h1>faq</h1>;
 };
 
 export default faq;
