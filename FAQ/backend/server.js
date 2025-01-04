@@ -4,6 +4,10 @@ import express from "express";
 import mongoose from "mongoose";
 const app = express();
 import morgan from "morgan";
+
+//Router
+import faqRouter from "./routes/faqRouter.js";
+
 let dummy = [
   {
     company: "ad",
@@ -32,6 +36,8 @@ app.post("/", (req, res) => {
 app.get("/api/v1/dummies", (req, res) => {
   res.status(200).json({ dummy });
 });
+
+app.use("/api/v1/faq", faqRouter);
 
 const port = process.env.PORT || 5100;
 
