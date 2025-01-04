@@ -9,16 +9,16 @@ import {
   getAllFAQ,
 } from "../controllers/faqController.js";
 import {
-  validateCategory,
+  validateFAQ,
   validateIdParam,
-} from "../middlewares/categoryValidationMiddleware.js";
+} from "../middlewares/validationMiddleware.js";
 
-router.route("/").get(getAllFAQ).post(validateCategory, createFAQ);
+router.route("/").get(getAllFAQ).post(validateFAQ, createFAQ);
 
 router
   .route("/:id")
   .get(validateIdParam, getFAQ)
-  .patch(validateCategory, validateIdParam, updateFAQ)
+  .patch(validateFAQ, validateIdParam, updateFAQ)
   .delete(validateIdParam, deleteFAQ);
 
 export default router;
