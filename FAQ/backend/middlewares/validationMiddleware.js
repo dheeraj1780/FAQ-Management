@@ -45,7 +45,19 @@ export const validateCategoryIdParam = withValidationErrors([
 export const validateFAQ = withValidationErrors([
   body("question").notEmpty().withMessage("question is Required"),
   body("answer").notEmpty().withMessage("answer is Required"),
-  body("categoryId").notEmpty().withMessage("categoryId is Required"),
+  body().notEmpty().withMessage("categoryId is Required"),
+  body("categoryId")
+    .notEmpty()
+    .custom(async (value) => {
+      if (value) {
+        if (!mongoose.Types.ObjectId.isValid(value)) {
+          throw new BadRequestError("Invalid category ID");
+        }
+        const category = await CategoryModel.findById(value);
+        if (!category)
+          throw new NotFoundError(`No category found with ID ${value}`);
+      }
+    }),
 ]);
 
 export const validateFAQIdParam = withValidationErrors([
