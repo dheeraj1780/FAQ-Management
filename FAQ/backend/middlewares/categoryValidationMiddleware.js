@@ -1,5 +1,6 @@
 import { body, param, validationResult } from "express-validator";
 import CategoryModel from "../models/CategoryModel.js";
+import FAQModel from "../models/FAQModel.js";
 import mongoose from "mongoose";
 import {
   BadRequestError,
@@ -32,11 +33,26 @@ export const validateCategory = withValidationErrors([
   body("description").notEmpty().withMessage("Description is Required"),
 ]);
 
-export const validateIdParam = withValidationErrors([
+export const validateCategoryIdParam = withValidationErrors([
   param("id").custom(async (value) => {
     const isValidId = mongoose.Types.ObjectId.isValid(value);
     if (!isValidId) throw new BadRequestError("invalid MongoDB id");
-    const job = await CategoryModel.findById(value);
-    if (!job) throw new NotFoundError(`no category with id : ${value}`);
+    const category = await CategoryModel.findById(value);
+    if (!category) throw new NotFoundError(`no category with id : ${value}`);
+  }),
+]);
+
+export const validateFAQ = withValidationErrors([
+  body("question").notEmpty().withMessage("question is Required"),
+  body("answer").notEmpty().withMessage("answer is Required"),
+  body("category").notEmpty().withMessage("category is Required"),
+]);
+
+export const validateFAQIdParam = withValidationErrors([
+  param("id").custom(async (value) => {
+    const isValidId = mongoose.Types.ObjectId.isValid(value);
+    if (!isValidId) throw new BadRequestError("invalid MongoDB id");
+    const faq = await FAQModel.findById(value);
+    if (!faq) throw new NotFoundError(`no faq with id : ${value}`);
   }),
 ]);
