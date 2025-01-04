@@ -1,4 +1,4 @@
-import FAQModel from "../models/FAQModel";
+import FAQModel from "../models/FAQModel.js";
 import { StatusCodes } from "http-status-codes";
 
 export const createFAQ = async (res, req) => {

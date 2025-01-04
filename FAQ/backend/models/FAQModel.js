@@ -12,15 +12,18 @@ const FAQModel = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    categoryId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+    category: {
+      // type: mongoose.Schema.Types.ObjectId,
+      // ref: "Category",
+      // required: true,
+      type: String,
       required: true,
+      trim: true,
     },
-    views: {
-      type: Number,
-      default: 0,
-    },
+    // views: {
+    //   type: Number,
+    //   default: 0,
+    // },
     createdAt: {
       type: Date,
       default: Date.now,

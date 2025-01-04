@@ -5,7 +5,7 @@ import {
   BadRequestError,
   NotFoundError,
   UnauthorizedError,
-} from "../errors/customError.js";
+} from "../errors/customErrors.js";
 
 const withValidationErrors = (validateValues) => {
   return [
@@ -33,11 +33,11 @@ export const validateFAQ = withValidationErrors([
   body("category").notEmpty().withMessage("category is Required"),
 ]);
 
-export const validateIdParam = withValidationErrors([
-  param("id").custom(async (value) => {
-    const isValidId = mongoose.Types.ObjectId.isValid(value);
-    if (!isValidId) throw new BadRequestError("invalid MongoDB id");
-    const category = await CategoryModel.findById(value);
-    if (!category) throw new NotFoundError(`no category with id : ${value}`);
-  }),
-]);
+// export const validateIdParam = withValidationErrors([
+//   param("id").custom(async (value) => {
+//     const isValidId = mongoose.Types.ObjectId.isValid(value);
+//     if (!isValidId) throw new BadRequestError("invalid MongoDB id");
+//     const category = await CategoryModel.findById(value);
+//     if (!category) throw new NotFoundError(`no category with id : ${value}`);
+//   }),
+// ]);
