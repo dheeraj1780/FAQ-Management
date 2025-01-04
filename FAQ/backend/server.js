@@ -6,6 +6,7 @@ const app = express();
 import morgan from "morgan";
 
 //Router
+import categoryRouter from "./routes/categoryRouter.js";
 import faqRouter from "./routes/faqRouter.js";
 
 let dummy = [
@@ -37,6 +38,7 @@ app.get("/api/v1/dummies", (req, res) => {
   res.status(200).json({ dummy });
 });
 
+app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
 
 const port = process.env.PORT || 5100;

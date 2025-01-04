@@ -8,14 +8,17 @@ import {
   updateFAQ,
   getAllFAQ,
 } from "../controllers/faqController.js";
-import { validateFAQ } from "../middlewares/validationMiddleware.js";
+import {
+  validateFAQ,
+  validateFAQIdParam,
+} from "../middlewares/validationMiddleware.js";
 
 router.route("/").get(getAllFAQ).post(validateFAQ, createFAQ);
 
 router
   .route("/:id")
-  .get(getFAQ)
-  .patch(validateFAQ, updateFAQ)
-  .delete(deleteFAQ);
+  .get(validateFAQIdParam, getFAQ)
+  .patch(validateFAQ, validateFAQIdParam, updateFAQ)
+  .delete(validateFAQIdParam, deleteFAQ);
 
 export default router;
