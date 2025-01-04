@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import FAQModel from "../models/FAQModel";
 import { StatusCodes } from "http-status-codes";
 
