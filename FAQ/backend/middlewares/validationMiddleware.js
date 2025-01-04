@@ -45,7 +45,7 @@ export const validateCategoryIdParam = withValidationErrors([
 export const validateFAQ = withValidationErrors([
   body("question").notEmpty().withMessage("question is Required"),
   body("answer").notEmpty().withMessage("answer is Required"),
-  body("category").notEmpty().withMessage("category is Required"),
+  body("categoryId").notEmpty().withMessage("categoryId is Required"),
 ]);
 
 export const validateFAQIdParam = withValidationErrors([

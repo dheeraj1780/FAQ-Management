@@ -10,15 +10,15 @@ import {
 } from "../controllers/categoryController.js";
 import {
   validateCategory,
-  validateIdParam,
-} from "../middlewares/categoryValidationMiddleware.js";
+  validateCategoryIdParam,
+} from "../middlewares/validationMiddleware.js";
 
-router.route("/").get(getAllCategories).post(validateCategory,createCategory);
+router.route("/").get(getAllCategories).post(validateCategory, createCategory);
 
 router
   .route("/:id")
-  .get(validateIdParam, getCategory)
-  .patch(validateCategory, validateIdParam, updateCategory)
-  .delete(validateIdParam, deleteCategory);
+  .get(validateCategoryIdParam, getCategory)
+  .patch(validateCategory, validateCategoryIdParam, updateCategory)
+  .delete(validateCategoryIdParam, deleteCategory);
 
 export default router;

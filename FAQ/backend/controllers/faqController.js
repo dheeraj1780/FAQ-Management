@@ -1,7 +1,7 @@
 import FAQModel from "../models/FAQModel.js";
 import { StatusCodes } from "http-status-codes";
 
-export const createFAQ = async (res, req) => {
+export const createFAQ = async (req, res) => {
   const faq = await FAQModel.create(req.body);
   res.status(StatusCodes.OK).json({ faq });
 };
@@ -23,7 +23,7 @@ export const deleteFAQ = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "faq deleted", faq: removedFAQ });
 };
 
-export const getAllFAQ = async (res, req) => {
+export const getAllFAQ = async (req, res) => {
   const getall = await FAQModel.find();
   res.status(StatusCodes.OK).json({ getall });
 };
