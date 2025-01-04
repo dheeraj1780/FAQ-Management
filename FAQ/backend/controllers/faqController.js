@@ -24,6 +24,19 @@ export const deleteFAQ = async (req, res) => {
 };
 
 export const getAllFAQ = async (req, res) => {
-  const getall = await FAQModel.find();
+  const { categoryId, words } = req.query;
+  const search = {};
+  if (categoryId) {
+    search.categoryId = categoryId;
+  }
+
+  if (words) {
+    search.$or = [
+      { question: { $regex: words, $options: "i" } },
+      { answer: { $regex: words, $options: "i" } },
+    ];
+  }
+  const getall = await FAQModel.find(search);
   res.status(StatusCodes.OK).json({ getall });
 };
+
