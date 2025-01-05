@@ -8,7 +8,8 @@ export const login = async (req, res) => {
   const user = await AdminModel.findOne({ username: req.body.username });
   console.log(req.body.username);
   console.log(user);
-  console.log(req.body.password);
+  console.log(req.body.password);  //const user = await AdminModel.find({});
+
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
 
