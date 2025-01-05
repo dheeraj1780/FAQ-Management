@@ -6,6 +6,7 @@ import { createJWT } from "../utils/tokenUtils.js";
 
 export const login = async (req, res) => {
   const user = await AdminModel.findOne({ username: req.body.username });
+  //const user = await AdminModel.find({});
 
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
