@@ -8,6 +8,7 @@ import morgan from "morgan";
 //Router
 import categoryRouter from "./routes/categoryRouter.js";
 import faqRouter from "./routes/faqRouter.js";
+import authRouter from "./routes/authRouter.js";
 
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
@@ -43,6 +44,7 @@ app.get("/api/v1/dummies", (req, res) => {
 
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
+app.use("/api/v1/", authRouter);
 
 //not found middleware
 app.use("*", (req, res) => {

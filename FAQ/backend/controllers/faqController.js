@@ -1,3 +1,4 @@
+import CategoryModel from "../models/CategoryModel.js";
 import FAQModel from "../models/FAQModel.js";
 import { StatusCodes } from "http-status-codes";
 
@@ -24,10 +25,11 @@ export const deleteFAQ = async (req, res) => {
 };
 
 export const getAllFAQ = async (req, res) => {
-  const { categoryId, words } = req.query;
+  const { category, words } = req.query;
   const search = {};
-  if (categoryId) {
-    search.categoryId = categoryId;
+  if (category) {
+    const categoryId = await CategoryModel.findOne({ name: category });
+    search.categoryId = categoryId._id;
   }
 
   if (words) {
@@ -39,4 +41,3 @@ export const getAllFAQ = async (req, res) => {
   const getall = await FAQModel.find(search);
   res.status(StatusCodes.OK).json({ getall });
 };
-
