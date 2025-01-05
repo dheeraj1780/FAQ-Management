@@ -13,34 +13,34 @@ import authRouter from "./routes/authRouter.js";
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
 
-let dummy = [
-  {
-    company: "ad",
-    position: "frnot",
-  },
-  {
-    company: "kjn",
-    position: "backend",
-  },
-];
+// let dummy = [
+//   {
+//     company: "ad",
+//     position: "frnot",
+//   },
+//   {
+//     company: "kjn",
+//     position: "backend",
+//   },
+// ];
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// });
 
-app.post("/", (req, res) => {
-  console.log(req);
-  res.json({ message: "data receieved", data: req.body });
-});
+// app.post("/", (req, res) => {
+//   console.log(req);
+//   res.json({ message: "data receieved", data: req.body });
+// });
 
-app.get("/api/v1/dummies", (req, res) => {
-  res.status(200).json({ dummy });
-});
+// app.get("/api/v1/dummies", (req, res) => {
+//   res.status(200).json({ dummy });
+// });
 
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
