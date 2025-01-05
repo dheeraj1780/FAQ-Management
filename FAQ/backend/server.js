@@ -44,7 +44,7 @@ app.use(express.json());
 
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
-app.use("/api/v1/", authRouter);
+app.use("/api/v1/auth", authRouter);
 
 //not found middleware
 app.use("*", (req, res) => {
