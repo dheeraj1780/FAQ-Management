@@ -10,6 +10,9 @@ import categoryRouter from "./routes/categoryRouter.js";
 import faqRouter from "./routes/faqRouter.js";
 import authRouter from "./routes/authRouter.js";
 
+//Middlewares
+import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
+
 let dummy = [
   {
     company: "ad",
@@ -42,6 +45,14 @@ app.get("/api/v1/dummies", (req, res) => {
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
 app.use("/api/v1/auth", authRouter);
+
+//not found middleware
+app.use("*", (req, res) => {
+  res.status(404).json({ msg: "Not Found" });
+});
+
+//error middleware
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 
