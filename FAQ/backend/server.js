@@ -41,7 +41,7 @@ app.get("/api/v1/dummies", (req, res) => {
 
 app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/faq", faqRouter);
-app.use("/api/v1/", authRouter);
+app.use("/api/v1/auth", authRouter);
 
 const port = process.env.PORT || 5100;
 
