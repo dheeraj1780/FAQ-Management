@@ -45,7 +45,6 @@ export const validateCategoryIdParam = withValidationErrors([
 export const validateFAQ = withValidationErrors([
   body("question").notEmpty().withMessage("question is Required"),
   body("answer").notEmpty().withMessage("answer is Required"),
-  body().notEmpty().withMessage("categoryId is Required"),
   body("categoryId")
     .notEmpty()
     .custom(async (value) => {
@@ -67,4 +66,9 @@ export const validateFAQIdParam = withValidationErrors([
     const faq = await FAQModel.findById(value);
     if (!faq) throw new NotFoundError(`no faq with id : ${value}`);
   }),
+]);
+
+export const validateLoginInput = withValidationErrors([
+  body("username").notEmpty().withMessage("username is required"),
+  body("password").notEmpty().withMessage("password is required"),
 ]);
