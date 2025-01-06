@@ -1,3 +1,4 @@
+import "express-async-errors";
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
@@ -27,11 +28,9 @@ import { authenticateUser } from "./middlewares/authMiddleware.js";
 //   },
 // ];
 
-
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World");
@@ -59,8 +58,11 @@ app.use("*", (req, res) => {
 });
 
 //error middleware
-
 app.use(errorHandlerMiddleware);
+// app.use((err, req, res, next) => {
+//   console.log(err);
+//   res.status(500).json({ msg: "something went wrong" });
+// });
 
 const port = process.env.PORT || 5100;
 
