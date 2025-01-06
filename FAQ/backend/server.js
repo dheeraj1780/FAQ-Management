@@ -1,4 +1,3 @@
-import "express-async-errors";
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
@@ -15,22 +14,15 @@ import userRouter from "./routes/userRouter.js";
 
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
-import { authenticateUser } from "./middlewares/authMiddleware.js";
 
-// let dummy = [
-//   {
-//     company: "ad",
-//     position: "frnot",
-//   },
-//   {
-//     company: "kjn",
-//     position: "backend",
-//   },
-// ];
+import { authenticateUser } from "./middlewares/authMiddleware.js";
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+app.use(cookieParser());
+app.use(express.json());
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World");
@@ -40,12 +32,6 @@ if (process.env.NODE_ENV === "development") {
 //   console.log(req);
 //   res.json({ message: "data receieved", data: req.body });
 // });
-
-// app.get("/api/v1/dummies", (req, res) => {
-//   res.status(200).json({ dummy });
-
-app.use(cookieParser());
-app.use(express.json());
 
 app.use("/api/v1/admin/categories", authenticateUser, categoryRouter);
 app.use("/api/v1/admin/faq", authenticateUser, faqRouter);
@@ -58,11 +44,8 @@ app.use("*", (req, res) => {
 });
 
 //error middleware
+
 app.use(errorHandlerMiddleware);
-// app.use((err, req, res, next) => {
-//   console.log(err);
-//   res.status(500).json({ msg: "something went wrong" });
-// });
 
 const port = process.env.PORT || 5100;
 
