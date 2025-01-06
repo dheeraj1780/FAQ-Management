@@ -14,15 +14,24 @@ import userRouter from "./routes/userRouter.js";
 
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
-
 import { authenticateUser } from "./middlewares/authMiddleware.js";
+
+// let dummy = [
+//   {
+//     company: "ad",
+//     position: "frnot",
+//   },
+//   {
+//     company: "kjn",
+//     position: "backend",
+//   },
+// ];
+
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(cookieParser());
-app.use(express.json());
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World");
@@ -32,6 +41,12 @@ app.use(express.json());
 //   console.log(req);
 //   res.json({ message: "data receieved", data: req.body });
 // });
+
+// app.get("/api/v1/dummies", (req, res) => {
+//   res.status(200).json({ dummy });
+
+app.use(cookieParser());
+app.use(express.json());
 
 app.use("/api/v1/admin/categories", authenticateUser, categoryRouter);
 app.use("/api/v1/admin/faq", authenticateUser, faqRouter);
