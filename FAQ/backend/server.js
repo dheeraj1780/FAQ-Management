@@ -24,15 +24,6 @@ if (process.env.NODE_ENV === "development") {
 app.use(cookieParser());
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World");
-// });
-
-// app.post("/", (req, res) => {
-//   console.log(req);
-//   res.json({ message: "data receieved", data: req.body });
-// });
-
 app.use("/api/v1/admin/categories", authenticateUser, categoryRouter);
 app.use("/api/v1/admin/faq", authenticateUser, faqRouter);
 app.use("/api/v1/user", userRouter);
