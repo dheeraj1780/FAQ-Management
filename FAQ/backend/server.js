@@ -13,6 +13,7 @@ import authRouter from "./routes/authRouter.js";
 
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
+
 import { authenticateUser } from "./middlewares/authMiddleware.js";
 
 if (process.env.NODE_ENV === "development") {
@@ -22,14 +23,14 @@ if (process.env.NODE_ENV === "development") {
 app.use(cookieParser());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// });
 
-app.post("/", (req, res) => {
-  console.log(req);
-  res.json({ message: "data receieved", data: req.body });
-});
+// app.post("/", (req, res) => {
+//   console.log(req);
+//   res.json({ message: "data receieved", data: req.body });
+// });
 
 app.use("/api/v1/categories", authenticateUser, categoryRouter);
 app.use("/api/v1/faq", authenticateUser, faqRouter);
