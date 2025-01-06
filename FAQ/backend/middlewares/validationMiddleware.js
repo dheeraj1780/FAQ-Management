@@ -29,7 +29,15 @@ const withValidationErrors = (validateValues) => {
 };
 
 export const validateCategory = withValidationErrors([
-  body("name").notEmpty().withMessage("Name is Required"),
+  body("name")
+    .notEmpty()
+    .withMessage("Name is Required")
+    .custom(async (name) => {
+      const category = await CategoryModel.findOne({ name });
+      if (category) {
+        throw new BadRequestError("category already exists");
+      }
+    }),
   body("description").notEmpty().withMessage("Description is Required"),
 ]);
 
