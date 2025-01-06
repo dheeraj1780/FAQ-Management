@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import categoryRouter from "./routes/categoryRouter.js";
 import faqRouter from "./routes/faqRouter.js";
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 //Middlewares
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
@@ -32,8 +33,9 @@ app.use(express.json());
 //   res.json({ message: "data receieved", data: req.body });
 // });
 
-app.use("/api/v1/categories", authenticateUser, categoryRouter);
-app.use("/api/v1/faq", authenticateUser, faqRouter);
+app.use("/api/v1/admin/categories", authenticateUser, categoryRouter);
+app.use("/api/v1/admin/faq", authenticateUser, faqRouter);
+app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 
 //not found middleware
