@@ -1,6 +1,14 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login, Categories, Faq, HomeLayout, Dashboard, Error } from "./pages";
+import {
+  Login,
+  Categories,
+  FAQ,
+  HomeLayout,
+  Dashboard,
+  Error,
+  AddFAQ,
+} from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +26,11 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Faq />,
+            element: <FAQ />,
+          },
+          {
+            path: "addFaq",
+            element: <AddFAQ />,
           },
           {
             path: "category",

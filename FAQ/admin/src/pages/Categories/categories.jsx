@@ -1,7 +1,15 @@
 import React from "react";
+import CategoryContainer from "../../components/CategoryContainer";
 
-const categories = () => {
-  return <h1>categories</h1>;
+const Categories = () => {
+  return (
+    <CategoryContainer
+      category="General FAQ"
+      description="This category includes all the general questions that do not fit in any specific category."
+      createdAt="01/01/2020"
+      updatedAt="05/12/2023"
+    />
+  );
 };
 
-export default categories;
+export default Categories;
