@@ -1,48 +1,52 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  .sidebar {
-    width: 250px;
-    height: calc(100vh - var(--nav-height, 60px));
-    background-color: var(--sidebar-bg, #333);
-    color: var(--sidebar-text, #fff);
+  width: 250px; /* Sidebar width */
+  height: 100vh; /* Full height */
+  background-color: #2c3e50; /* Sidebar background color */
+  color: white;
+  padding: 20px;
+  z-index: 10; /* Ensures the sidebar stays above other elements */
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+
+  .sidebar-nav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-
-  .sidebar-menu {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 0;
   }
 
-  .menu-item {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-
-  .menu-item:hover {
-    color: var(--primary-color, #007bff);
-  }
-
-  .logout-btn {
-    background-color: var(--logout-bg, #e74c3c);
-    color: var(--white, #fff);
-    border: none;
-    border-radius: 5px;
+  .sidebar-link {
+    color: white;
+    text-decoration: none;
+    display: block;
     padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
+    margin: 10px 0;
+    border-radius: 6px;
     transition: background-color 0.3s;
   }
 
+  .sidebar-link:hover {
+    background-color: #34495e;
+  }
+
+  .logout {
+    margin-top: auto; /* Push the logout button to the bottom */
+  }
+
+  .logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
   .logout-btn:hover {
-    background-color: var(--logout-hover-bg, #c0392b);
+    background-color: #c0392b;
   }
 `;
 export default Wrapper;
