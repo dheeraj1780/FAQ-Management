@@ -1,7 +1,7 @@
 import React from "react";
 
-const categories = () => {
-  return <h1>categories</h1>;
+const Categories = () => {
+  return <div></div>;
 };
 
-export default categories;
+export default Categories;

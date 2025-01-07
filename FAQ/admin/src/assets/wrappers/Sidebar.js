@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   .sidebar {
-    height: 100vh;
     width: 250px;
+    height: calc(100vh - var(--nav-height, 60px));
     background-color: var(--sidebar-bg, #333);
     color: var(--sidebar-text, #fff);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   }
 
   .sidebar-menu {

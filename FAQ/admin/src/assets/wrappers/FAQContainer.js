@@ -4,9 +4,15 @@ const Wrapper = styled.section`
   .faq-container {
     border: 1px solid #ccc;
     padding: 16px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    margin-bottom: 16px;
+    border-radius: 16px;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+
+  .faq-container:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
 
   .faq-question {
