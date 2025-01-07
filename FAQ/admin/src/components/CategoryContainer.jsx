@@ -1,4 +1,6 @@
 import Wrapper from "../assets/wrappers/CategoryContainer";
+import { Link } from "react-router-dom";
+
 const CategoryContainer = ({ category, description, createdAt, updatedAt }) => {
   return (
     <Wrapper>
@@ -14,6 +16,12 @@ const CategoryContainer = ({ category, description, createdAt, updatedAt }) => {
           <p>
             <strong>Updated At:</strong> {updatedAt}
           </p>
+        </div>
+        <div className="category-actions">
+          <Link to="/dashboard/editcategory" className="btn update-btn">
+            Update
+          </Link>
+          <button className="btn delete-btn">Delete</button>
         </div>
       </div>
     </Wrapper>

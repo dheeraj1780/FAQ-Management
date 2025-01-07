@@ -8,7 +8,7 @@ const login = () => {
     <Wrapper>
       <Form method="post" className="form">
         <h4>Login</h4>
-        <FormRow type="email" name="email" />
+        <FormRow type="text" name="username" />
         <FormRow type="password" name="password" />
         <SubmitBtn />
       </Form>

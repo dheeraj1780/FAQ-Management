@@ -8,6 +8,9 @@ import {
   Dashboard,
   Error,
   AddFAQ,
+  AddCategory,
+  EditFAQ,
+  EditCategory,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
           {
             path: "category",
             element: <Categories />,
+          },
+          {
+            path: "editfaq",
+            element: <EditFAQ />,
+          },
+          {
+            path: "editcategory",
+            element: <EditCategory />,
+          },
+          {
+            path: "addcategory",
+            element: <AddCategory />,
           },
         ],
       },

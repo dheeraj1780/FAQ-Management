@@ -5,3 +5,6 @@ export { default as Dashboard } from "./dashboard";
 export { default as HomeLayout } from "./homeLayout";
 export { default as Error } from "./error";
 export { default as AddFAQ } from "./FAQ/AddFAQ";
+export { default as EditFAQ } from "./FAQ/EditFAQ";
+export { default as EditCategory } from "./Categories/EditCategory";
+export { default as AddCategory } from "./Categories/AddCategory";

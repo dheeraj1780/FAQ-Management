@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/FAQContainer";
+import { Link } from "react-router-dom";
 
 const FAQContainer = ({ question, answer, category, createdAt, updatedAt }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -29,7 +30,9 @@ const FAQContainer = ({ question, answer, category, createdAt, updatedAt }) => {
               </div>
             </div>
             <div className="faq-actions">
-              <button className="btn update-btn">Update</button>
+              <Link to="/dashboard/editfaq" className="btn update-btn">
+                Update
+              </Link>
               <button className="btn delete-btn">Delete</button>
             </div>
           </div>
