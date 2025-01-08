@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup-project": "npm i && cd backend && npm i",
-    "dev": "nodemon server.js"
+    "setup-project": "npm install && npm run setup-client",
+    "setup-client": "cd ../admin && npm install",
+    "server": "nodemon server.js",
+    "client": "cd ../admin && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
