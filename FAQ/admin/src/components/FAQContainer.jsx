@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/FAQContainer";
 import { Link } from "react-router-dom";
 
-const FAQContainer = ({ question, answer, category, createdAt, updatedAt }) => {
+const FAQContainer = ({
+  _id,
+  question,
+  answer,
+  categoryId,
+  createdAt,
+  updatedAt,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleAnswer = () => {
@@ -21,7 +28,7 @@ const FAQContainer = ({ question, answer, category, createdAt, updatedAt }) => {
           <div className="faq-content">
             <p className="faq-answer">{answer}</p>
             <div className="faq-meta">
-              <span className="faq-category">Category: {category}</span>
+              <span className="faq-category">Category: {categoryId}</span>
               <div className="faq-timestamps">
                 <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
                 <span>
