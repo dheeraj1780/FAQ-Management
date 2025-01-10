@@ -18,6 +18,7 @@ import { action as loginAction } from "./pages/login";
 import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 
 //loaders
+import { loader as getAllCategoryLoader } from "./pages/Categories/GetCategory";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
           {
             path: "category",
             element: <Categories />,
+            loader: getAllCategoryLoader,
           },
           {
             path: "editfaq",
