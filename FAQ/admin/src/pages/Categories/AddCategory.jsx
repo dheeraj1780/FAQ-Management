@@ -2,7 +2,20 @@ import React from "react";
 import { Form } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/FAQForm";
 
-const EditCategory = () => {
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await customFetch.post("/admin/categories", data);
+    toast.success("Category added successfully");
+    return redirect("/dashboard");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+const AddCategory = () => {
   return (
     <Wrapper>
       <Form>
@@ -25,4 +38,4 @@ const EditCategory = () => {
   );
 };
 
-export default EditCategory;
+export default AddCategory;

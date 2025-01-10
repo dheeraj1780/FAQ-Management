@@ -13,6 +13,12 @@ import {
   EditCategory,
 } from "./pages";
 
+//actions
+import { action as loginAction } from "./pages/login";
+import { action as addCategoryAction } from "./pages/Categories/AddCategory";
+
+//loaders
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +28,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "dashboard",
@@ -50,6 +57,7 @@ const router = createBrowserRouter([
           {
             path: "addcategory",
             element: <AddCategory />,
+            action: addCategoryAction,
           },
         ],
       },

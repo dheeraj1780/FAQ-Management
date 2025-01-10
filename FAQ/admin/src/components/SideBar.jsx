@@ -7,7 +7,7 @@ const SideBar = () => {
         <ul>
           <li>
             <Link to="/dashboard/" className="sidebar-link">
-              Home
+              FAQ
             </Link>
           </li>
           <li>
@@ -18,6 +18,11 @@ const SideBar = () => {
           <li>
             <Link to="/dashboard/category" className="sidebar-link">
               Category
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/addcategory" className="sidebar-link">
+              Add Category
             </Link>
           </li>
           <li className="logout">
