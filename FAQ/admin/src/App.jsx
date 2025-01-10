@@ -19,6 +19,7 @@ import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 
 //loaders
 import { loader as getAllCategoryLoader } from "./pages/Categories/GetCategory";
+import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <FAQ />,
+            loader: getAllFaqLoader,
           },
           {
             path: "addFaq",
