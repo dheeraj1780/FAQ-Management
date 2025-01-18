@@ -1,28 +1,29 @@
 import React from "react";
 import { Form } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/FAQForm";
-import { SubmitBtn } from "../../components";
+import { SubmitBtn, FormRow } from "../../components";
 
 const EditCategory = () => {
   return (
     <Wrapper>
       <Form>
-        <h2>{"Edit Catgeory"}</h2>
+        <h2>{"Edit Category"}</h2>
+        <FormRow
+          type="text"
+          name="name"
+          labelText="Category Name"
+          placeholder="Enter the Category name"
+        />
         <div className="form-group">
-          <label htmlFor="question">Category Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter the Category name"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="answer">Description</label>
+          <label htmlFor="description" className="form-label">
+            Description
+          </label>
           <textarea
             id="description"
             name="description"
-            placeholder="Describe in few words..."
+            className="form-input"
+            placeholder="Describe in a few words..."
+            rows="4"
           />
         </div>
         <div className="form-actions">

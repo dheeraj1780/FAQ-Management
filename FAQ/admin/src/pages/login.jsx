@@ -23,8 +23,8 @@ const login = () => {
     <Wrapper>
       <Form method="post" className="form">
         <h4>Login</h4>
-        <FormRow type="text" name="username" />
-        <FormRow type="password" name="password" />
+        <FormRow type="text" name="username" labelText="UserName" />
+        <FormRow type="password" name="password" labelText="Password" />
         <SubmitBtn />
       </Form>
     </Wrapper>

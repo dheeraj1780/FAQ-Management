@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, redirect } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/FAQForm";
-import { SubmitBtn } from "../../components";
+import { SubmitBtn, FormRow } from "../../components";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 
@@ -23,22 +23,23 @@ const AddCategory = () => {
   return (
     <Wrapper>
       <Form method="post">
-        <h2>{"Add Catgeory"}</h2>
+        <h2>{"Add Category"}</h2>
+        <FormRow
+          type="text"
+          name="name"
+          labelText="Category Name"
+          placeholder="Enter the Category name"
+        />
         <div className="form-group">
-          <label htmlFor="name">Category Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter the Category name"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description" className="form-label">
+            Description
+          </label>
           <textarea
             id="description"
             name="description"
-            placeholder="Describe in few words..."
+            className="form-input"
+            placeholder="Describe in a few words..."
+            rows="4"
           />
         </div>
         <div className="form-actions">
