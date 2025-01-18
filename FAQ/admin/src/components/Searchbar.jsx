@@ -23,6 +23,7 @@ const Searchbar = () => {
         <form onSubmit={handleSearch} className="search-bar-form">
           <div className="input-container">
             <label htmlFor="category">Category</label>
+            <br />
             <input
               type="text"
               id="category"
@@ -34,6 +35,7 @@ const Searchbar = () => {
 
           <div className="input-container">
             <label htmlFor="search-text">Search</label>
+            <br />
             <input
               type="text"
               id="search-text"

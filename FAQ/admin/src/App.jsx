@@ -16,6 +16,7 @@ import {
 //actions
 import { action as loginAction } from "./pages/login";
 import { action as addCategoryAction } from "./pages/Categories/AddCategory";
+import { action as addFaqAction } from "./pages/FAQ/AddFAQ";
 
 //loaders
 import { loader as getAllCategoryLoader } from "./pages/Categories/GetCategory";
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
             path: "addFaq",
             element: <AddFAQ />,
             loader: addFaqLoader,
+            action: addFaqAction,
           },
           {
             path: "category",
