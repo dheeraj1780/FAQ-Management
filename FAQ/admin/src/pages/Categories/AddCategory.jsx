@@ -30,7 +30,7 @@ const AddCategory = () => {
             type="text"
             id="name"
             name="name"
-            placeholder="Enter the question"
+            placeholder="Enter the Category name"
           />
         </div>
         <div className="form-group">
@@ -38,7 +38,7 @@ const AddCategory = () => {
           <textarea
             id="description"
             name="description"
-            placeholder="Enter the answer"
+            placeholder="Describe in few words..."
           />
         </div>
         <div className="form-actions">
