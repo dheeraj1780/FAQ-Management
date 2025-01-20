@@ -19,10 +19,8 @@ import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 import { action as addFaqAction } from "./pages/FAQ/AddFAQ";
 
 //loaders
-import { loader as getAllCategoryLoader } from "./pages/Categories/GetCategory";
 import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
-import { loader as addFaqLoader } from "./pages/FAQ/AddFAQ";
-import { loader as editFaqLoader } from "./pages/FAQ/EditFAQ";
+import { loader as dashboardLoader } from "./pages/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +36,7 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+        loader: dashboardLoader,
         children: [
           {
             index: true,
@@ -47,18 +46,15 @@ const router = createBrowserRouter([
           {
             path: "addFaq",
             element: <AddFAQ />,
-            loader: addFaqLoader,
             action: addFaqAction,
           },
           {
             path: "category",
             element: <Categories />,
-            loader: getAllCategoryLoader,
           },
           {
             path: "editfaq",
             element: <EditFAQ />,
-            loader: editFaqLoader,
           },
           {
             path: "editcategory",

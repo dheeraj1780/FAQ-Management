@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import Wrapper from "../../assets/wrappers/FAQForm";
-import { SubmitBtn, QuillEditor, FormRow } from "../../components";
+import {
+  SubmitBtn,
+  QuillEditor,
+  FormRow,
+  CategoryDropdown,
+} from "../../components";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { Form, useLoaderData } from "react-router-dom";
-
-export const loader = async ({ request }) => {
-  try {
-    const { data } = await customFetch.get("/admin/categories");
-    return { data };
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
+import { useCategoryContext } from "../dashboard";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -30,9 +26,7 @@ export const action = async ({ request }) => {
 
 const AddFAQ = () => {
   const [content, setContent] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const { data } = useLoaderData();
-  const { categories } = data;
+  const { categories } = useCategoryContext();
 
   return (
     <Wrapper>
@@ -51,25 +45,7 @@ const AddFAQ = () => {
             placeholder="Enter FAQ content"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select
-            id="category"
-            name="category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="form-select"
-          >
-            <option value="" disabled>
-              Select a Category
-            </option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.name}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <CategoryDropdown categories={categories} />
         <div className="form-actions">
           <SubmitBtn />
         </div>

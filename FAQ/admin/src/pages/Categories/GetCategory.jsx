@@ -3,20 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import CategoryContainer from "../../components/CategoryContainer";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
-
-export const loader = async ({ request }) => {
-  try {
-    const { data } = await customFetch.get("/admin/categories");
-    return { data };
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
+import { useCategoryContext } from "../dashboard";
 
 const Categories = () => {
-  const { data } = useLoaderData();
-  const { categories } = data;
+  const { categories } = useCategoryContext();
   console.log({ categories });
   return (
     <div>

@@ -19,7 +19,6 @@ export const loader = async ({ request }) => {
 const FAQ = () => {
   const { data } = useLoaderData();
   const { getall } = data;
-  console.log({ getall });
   return (
     <>
       <Searchbar />

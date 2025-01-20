@@ -1,10 +1,13 @@
 // SearchBar.jsx
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Searchbar";
+import CategoryDropdown from "./CategoryDropdown";
+import { useCategoryContext } from "../pages/dashboard";
 
 const Searchbar = () => {
   const [category, setCategory] = useState("");
   const [searchText, setSearchText] = useState("");
+  const { categories } = useCategoryContext();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -21,17 +24,7 @@ const Searchbar = () => {
     <Wrapper>
       <div className="search-bar-container">
         <form onSubmit={handleSearch} className="search-bar-form">
-          <div className="input-container">
-            <label htmlFor="category">Category</label>
-            <br />
-            <input
-              type="text"
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              placeholder="Enter category"
-            />
-          </div>
+          <CategoryDropdown categories={categories} />
 
           <div className="input-container">
             <label htmlFor="search-text">Search</label>
