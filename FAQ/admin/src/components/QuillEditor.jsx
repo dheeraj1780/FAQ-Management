@@ -4,9 +4,10 @@ import "quill/dist/quill.snow.css";
 
 const QuillEditor = ({ content, setContent, placeholder }) => {
   const editorRef = useRef(null);
+  const quillInstance = useRef(null); // To track the Quill instance
 
   useEffect(() => {
-    if (!editorRef.current.quill) {
+    if (!quillInstance.current) {
       const quill = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
@@ -26,13 +27,14 @@ const QuillEditor = ({ content, setContent, placeholder }) => {
         setContent(htmlContent); // Update parent state
       });
 
-      if (content) {
-        quill.root.innerHTML = content; // Set initial content
-      }
-
-      editorRef.current.quill = quill; // Save Quill instance
+      quillInstance.current = quill; // Save the Quill instance for future use
     }
-  }, [content, setContent, placeholder]);
+
+    // If content changes, set it in Quill editor
+    if (content && quillInstance.current) {
+      quillInstance.current.root.innerHTML = content; // Set the new content
+    }
+  }, [content, setContent, placeholder]); // Depend on content and placeholder
 
   return <div ref={editorRef} style={{ height: "300px" }}></div>;
 };

@@ -8,7 +8,7 @@ import {
 } from "../../components";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import { useCategoryContext } from "../dashboard";
 
 export const action = async ({ request }) => {
@@ -45,6 +45,7 @@ const AddFAQ = () => {
             placeholder="Enter FAQ content"
           />
         </div>
+        <input type="hidden" name="answer" value={content} />
         <CategoryDropdown categories={categories} />
         <div className="form-actions">
           <SubmitBtn />

@@ -17,10 +17,12 @@ import {
 import { action as loginAction } from "./pages/login";
 import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 import { action as addFaqAction } from "./pages/FAQ/AddFAQ";
+import { action as editFaqAction } from "./pages/FAQ/EditFAQ";
 
 //loaders
 import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
 import { loader as dashboardLoader } from "./pages/dashboard";
+import { loader as editFaqLoader } from "./pages/FAQ/EditFAQ";
 
 const router = createBrowserRouter([
   {
@@ -53,11 +55,13 @@ const router = createBrowserRouter([
             element: <Categories />,
           },
           {
-            path: "editfaq",
+            path: "editfaq/:id",
             element: <EditFAQ />,
+            loader: editFaqLoader,
+            action: editFaqAction,
           },
           {
-            path: "editcategory",
+            path: "editcategory/:id",
             element: <EditCategory />,
           },
           {

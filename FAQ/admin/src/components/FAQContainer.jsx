@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/FAQContainer";
 import { Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const FAQContainer = ({
   _id,
@@ -10,6 +11,8 @@ const FAQContainer = ({
   createdAt,
   updatedAt,
 }) => {
+  //sanitizing answer
+  const sanitizedAnswer = DOMPurify.sanitize(answer);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleAnswer = () => {
@@ -26,7 +29,10 @@ const FAQContainer = ({
         </div>
         {isExpanded && (
           <div className="faq-content">
-            <p className="faq-answer">{answer}</p>
+            <div
+              className="faq-answer"
+              dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
+            />
             <div className="faq-meta">
               <span className="faq-category">Category: {categoryId}</span>
               <div className="faq-timestamps">
@@ -37,7 +43,7 @@ const FAQContainer = ({
               </div>
             </div>
             <div className="faq-actions">
-              <Link to="/dashboard/editfaq" className="btn update-btn">
+              <Link to={`/dashboard/editfaq/${_id}`} className="btn update-btn">
                 Update
               </Link>
               <button className="btn delete-btn">Delete</button>

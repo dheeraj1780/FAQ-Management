@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/FAQForm";
 import {
@@ -11,9 +11,38 @@ import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { useCategoryContext } from "../dashboard";
 
+export const loader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/admin/faq/${params.id}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect("/dashboard");
+  }
+};
+
+export const action = async ({ request, params }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await customFetch.patch(`/admin/faq/${params.id}`, data);
+    toast.success("Faq updated Successfully");
+    return redirect("/dashboard");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
 const EditFAQ = () => {
   const [content, setContent] = useState("");
   const { categories } = useCategoryContext();
+  const { faq } = useLoaderData();
+
+  useEffect(() => {
+    setContent(faq.answer || "");
+  }, [faq]);
 
   return (
     <Wrapper>
@@ -24,6 +53,7 @@ const EditFAQ = () => {
           name="question"
           labelText="Question"
           placeholder="Enter the question"
+          defaultValue={faq.question}
         />
         <div className="form-group">
           <QuillEditor
@@ -32,7 +62,7 @@ const EditFAQ = () => {
             placeholder="Enter FAQ content"
           />
         </div>
-        <CategoryDropdown categories={categories} />
+        <CategoryDropdown categories={categories} existed={faq.categoryId} />
         <div className="form-actions">
           <SubmitBtn />
         </div>
