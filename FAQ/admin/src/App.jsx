@@ -11,6 +11,8 @@ import {
   AddCategory,
   EditFAQ,
   EditCategory,
+  DeleteCategory,
+  DeleteFaq,
 } from "./pages";
 
 //actions
@@ -19,6 +21,8 @@ import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 import { action as addFaqAction } from "./pages/FAQ/AddFAQ";
 import { action as editFaqAction } from "./pages/FAQ/EditFAQ";
 import { action as editCategoryAction } from "./pages/Categories/EditCategory";
+import { action as deleteCategoryAction } from "./pages/Categories/DeleteCategory";
+import { action as deleteFaqAction } from "./pages/FAQ/DeleteFaq";
 
 //loaders
 import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
@@ -72,6 +76,14 @@ const router = createBrowserRouter([
             path: "addcategory",
             element: <AddCategory />,
             action: addCategoryAction,
+          },
+          {
+            path: "deletecategory/:id",
+            action: deleteCategoryAction,
+          },
+          {
+            path: "deletefaq/:id",
+            action: deleteFaqAction,
           },
         ],
       },

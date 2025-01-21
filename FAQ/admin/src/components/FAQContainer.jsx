@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/FAQContainer";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import DOMPurify from "dompurify";
 
 const FAQContainer = ({
@@ -46,7 +46,11 @@ const FAQContainer = ({
               <Link to={`/dashboard/editfaq/${_id}`} className="btn update-btn">
                 Update
               </Link>
-              <button className="btn delete-btn">Delete</button>
+              <Form action={`/dashboard/deletefaq/${_id}`} method="post">
+                <button className="btn delete-btn" type="submit">
+                  Delete
+                </button>
+              </Form>
             </div>
           </div>
         )}

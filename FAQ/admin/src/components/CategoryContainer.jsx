@@ -1,5 +1,5 @@
 import Wrapper from "../assets/wrappers/CategoryContainer";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 
 const CategoryContainer = ({
   _id,
@@ -30,7 +30,11 @@ const CategoryContainer = ({
           >
             Update
           </Link>
-          <button className="btn delete-btn">Delete</button>
+          <Form action={`/dashboard/deletecategory/${_id}`} method="post">
+            <button className="btn delete-btn" type="submit">
+              Delete
+            </button>
+          </Form>
         </div>
       </div>
     </Wrapper>

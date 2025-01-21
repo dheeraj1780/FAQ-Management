@@ -8,3 +8,5 @@ export { default as AddFAQ } from "./FAQ/AddFAQ";
 export { default as EditFAQ } from "./FAQ/EditFAQ";
 export { default as EditCategory } from "./Categories/EditCategory";
 export { default as AddCategory } from "./Categories/AddCategory";
+export { default as DeleteCategory } from "./Categories/DeleteCategory";
+export { default as DeleteFaq } from "./FAQ/DeleteFaq";
