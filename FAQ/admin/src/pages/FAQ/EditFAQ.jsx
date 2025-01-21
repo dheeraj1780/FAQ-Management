@@ -14,7 +14,6 @@ import { useCategoryContext } from "../dashboard";
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/admin/faq/${params.id}`);
-    console.log(data);
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.msg);

@@ -18,11 +18,13 @@ import { action as loginAction } from "./pages/login";
 import { action as addCategoryAction } from "./pages/Categories/AddCategory";
 import { action as addFaqAction } from "./pages/FAQ/AddFAQ";
 import { action as editFaqAction } from "./pages/FAQ/EditFAQ";
+import { action as editCategoryAction } from "./pages/Categories/EditCategory";
 
 //loaders
 import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
 import { loader as dashboardLoader } from "./pages/dashboard";
 import { loader as editFaqLoader } from "./pages/FAQ/EditFAQ";
+import { loader as editCategoryLoader } from "./pages/Categories/EditCategory";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,8 @@ const router = createBrowserRouter([
           {
             path: "editcategory/:id",
             element: <EditCategory />,
+            loader: editCategoryLoader,
+            action: editCategoryAction,
           },
           {
             path: "addcategory",

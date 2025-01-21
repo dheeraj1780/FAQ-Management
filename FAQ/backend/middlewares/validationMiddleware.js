@@ -32,9 +32,9 @@ export const validateCategory = withValidationErrors([
   body("name")
     .notEmpty()
     .withMessage("Name is Required")
-    .custom(async (name) => {
+    .custom(async (name, { req }) => {
       const category = await CategoryModel.findOne({ name });
-      if (category) {
+      if (category && category._id.toString() !== req.params.id) {
         throw new BadRequestError("category already exists");
       }
     }),

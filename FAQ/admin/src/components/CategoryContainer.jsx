@@ -24,7 +24,10 @@ const CategoryContainer = ({
           </p>
         </div>
         <div className="category-actions">
-          <Link to="/dashboard/editcategory" className="btn update-btn">
+          <Link
+            to={`/dashboard/editcategory/${_id}`}
+            className="btn update-btn"
+          >
             Update
           </Link>
           <button className="btn delete-btn">Delete</button>

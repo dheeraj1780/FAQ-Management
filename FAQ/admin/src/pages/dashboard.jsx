@@ -20,7 +20,6 @@ const categoryContext = createContext();
 const dashboard = () => {
   const { data } = useLoaderData();
   const { categories } = data;
-  console.log({ categories });
 
   return (
     <categoryContext.Provider value={{ categories }}>
