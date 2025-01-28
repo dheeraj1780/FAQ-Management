@@ -2,7 +2,10 @@ import CategoryModel from "../models/CategoryModel.js";
 import { StatusCodes } from "http-status-codes";
 
 export const getAllCategories = async (req, res) => {
-  const categories = await CategoryModel.find({});
+  const searchQuery = req.query.search || "";
+  const categories = await CategoryModel.find({
+    name: { $regex: searchQuery, $options: "i" },
+  });
   res.status(StatusCodes.OK).json({ categories });
 };
 
