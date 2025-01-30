@@ -16,7 +16,6 @@ const FAQ = ({ faqdata }) => {
   // ✅ Fetch FAQ function (runs when searchText/category changes)
   const fetchFAQs = async () => {
     try {
-      console.log(searchText);
       const { data } = await customFetch.get("/user/faq", {
         params: { words: searchText, category: category }, // ✅ Correct variable names
       });
