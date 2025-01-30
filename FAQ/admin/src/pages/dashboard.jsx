@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 export const loader = async ({ request }) => {
   try {
     const { data } = await customFetch.get("/admin/categories");
+    console.log(data);
     return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
