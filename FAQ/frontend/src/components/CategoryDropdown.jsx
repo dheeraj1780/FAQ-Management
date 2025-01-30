@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const CategoryDropdown = ({ categories, existed, set }) => {
+const CategoryDropdown = ({ categories, set }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  useEffect(() => {
-    setSelectedCategory(existed);
-  }, [existed]);
 
   return (
     <div className="form-group">
@@ -18,11 +15,10 @@ const CategoryDropdown = ({ categories, existed, set }) => {
           set(e.target.value);
         }}
         className="form-select"
-        defaultValue={{ existed }}
       >
         <option value="">Select a Category</option>
         {categories.map((category) => (
-          <option key={category.id} value={category.name}>
+          <option key={category._id} value={category.name}>
             {category.name}
           </option>
         ))}
