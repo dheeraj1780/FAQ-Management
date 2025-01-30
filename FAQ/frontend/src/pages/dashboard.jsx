@@ -4,22 +4,30 @@ import { NavBar } from "../components";
 import Wrapper from "../assets/wrappers/Dashboard";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+import FAQ from "./FAQ";
 
-export const loader = async ({ request }) => {
+export const loader = async () => {
   try {
-    const { data } = await customFetch.get("/user/category");
-    return { data };
+    // First API call for categories
+    const { data: categoryData } = await customFetch.get("/user/category");
+
+    // Second API call for FAQs
+    const { data: faqData } = await customFetch.get("/user/faq");
+
+    // Return both results as an object
+    return { categoryData, faqData };
   } catch (error) {
+    // Handle error and return empty arrays for both data if error occurs
     toast.error(error?.response?.data?.msg);
-    return error;
+    return { categoryData: [], faqData: [] };
   }
 };
 
 const categoryContext = createContext();
 
 const dashboard = () => {
-  const { data } = useLoaderData();
-  const { categories } = data;
+  const { categoryData, faqData } = useLoaderData();
+  const { categories } = categoryData;
 
   return (
     <categoryContext.Provider value={{ categories }}>
@@ -27,7 +35,7 @@ const dashboard = () => {
         <NavBar />
         <div className="dashboard-content">
           <div className="main-content">
-            <Outlet />
+            <FAQ faqdata={faqData} />
           </div>
         </div>
       </Wrapper>
