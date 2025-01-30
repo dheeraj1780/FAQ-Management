@@ -1,3 +1,4 @@
-export { default as Homepage } from "./Homepage";
-export { default as Questions } from "./Questions";
-export { default as ViewQuestion } from "./ViewQuestion";
+export { default as Dashboard } from "./dashboard";
+export { default as FAQ } from "./FAQ";
+export { default as HomeLayout } from "./homeLayout";
+export { default as Error } from "./error";

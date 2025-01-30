@@ -4,4 +4,6 @@ export { default as FormRow } from "./FormRow";
 export { default as SubmitBtn } from "./SubmitBtn";
 export { default as QuillEditor } from "./QuillEditor";
 export { default as CategoryDropdown } from "./CategoryDropdown";
-
+export { default as CategoryContainer } from "./CategoryContainer";
+export { default as FAQContainer } from "./FAQContainer";
+export { default as Searchbar } from "./Searchbar";

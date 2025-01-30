@@ -4,10 +4,11 @@
   "main": "index.js",
   "scripts": {
     "setup-project": "npm install && npm run setup-client",
-    "setup-client": "cd ../admin && npm install",
+    "setup-client": "cd ../admin && npm install && cd ../frontend && npm install",
     "server": "nodemon server.js",
-    "client": "cd ../admin && npm run dev",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "admin": "cd ../admin && npm run dev",
+    "client": "cd ../frontend && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run admin\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
