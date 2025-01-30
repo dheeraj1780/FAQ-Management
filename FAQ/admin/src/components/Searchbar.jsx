@@ -4,6 +4,16 @@ import Wrapper from "../assets/wrappers/Searchbar";
 import CategoryDropdown from "./CategoryDropdown";
 import { useCategoryContext } from "../pages/dashboard";
 
+export const loader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/admin/faq/`);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect("/dashboard");
+  }
+};
+
 const Searchbar = () => {
   const [category, setCategory] = useState("");
   const [searchText, setSearchText] = useState("");
@@ -12,6 +22,9 @@ const Searchbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     // Handle search logic here (e.g., pass data to parent component or call an API)
+    setCategory(category);
+    setSearchText(searchText);
+
     console.log("Searching for:", { category, searchText });
   };
 
@@ -24,7 +37,7 @@ const Searchbar = () => {
     <Wrapper>
       <div className="search-bar-container">
         <form onSubmit={handleSearch} className="search-bar-form">
-          <CategoryDropdown categories={categories} />
+          <CategoryDropdown categories={categories} set={setCategory} />
 
           <div className="input-container">
             <label htmlFor="search-text">Search</label>
