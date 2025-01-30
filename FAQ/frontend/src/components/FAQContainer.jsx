@@ -7,9 +7,6 @@ const FAQContainer = ({
   _id,
   question,
   answer,
-  categoryId,
-  createdAt,
-  updatedAt,
 }) => {
   //sanitizing answer
   const sanitizedAnswer = DOMPurify.sanitize(answer);
@@ -33,25 +30,6 @@ const FAQContainer = ({
               className="faq-answer"
               dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
             />
-            <div className="faq-meta">
-              <span className="faq-category">Category: {categoryId}</span>
-              <div className="faq-timestamps">
-                <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
-                <span>
-                  Last Updated: {new Date(updatedAt).toLocaleDateString()}
-                </span>
-              </div>
-            </div>
-            <div className="faq-actions">
-              <Link to={`/dashboard/editfaq/${_id}`} className="btn update-btn">
-                Update
-              </Link>
-              <Form action={`/dashboard/deletefaq/${_id}`} method="post">
-                <button className="btn delete-btn" type="submit">
-                  Delete
-                </button>
-              </Form>
-            </div>
           </div>
         )}
       </div>

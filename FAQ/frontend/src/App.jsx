@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Dashboard, FAQ, HomeLayout, Error } from "./pages";
 
 //loaders
-import { loader as getAllFaqLoader } from "./pages/FAQ.jsx";
 import { loader as dashboardLoader } from "./pages/dashboard";
 
 const router = createBrowserRouter([
@@ -12,16 +11,9 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "faq",
+        index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
-        children: [
-          {
-            index: true,
-            element: <FAQ />,
-            loader: getAllFaqLoader,
-          },
-        ],
       },
     ],
   },
