@@ -11,5 +11,3 @@ export async function action({ params }) {
   }
   return redirect("/dashboard/category");
 }
-
-export default null;

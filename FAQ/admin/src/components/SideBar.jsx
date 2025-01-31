@@ -1,6 +1,8 @@
 import Wrapper from "../assets/wrappers/Sidebar";
+import { useDashboardContext } from "../pages/dashboard";
 import { Link } from "react-router-dom";
 const SideBar = () => {
+  const { logoutUser } = useDashboardContext();
   return (
     <Wrapper>
       <nav className="sidebar-nav">
@@ -26,7 +28,9 @@ const SideBar = () => {
             </Link>
           </li>
           <li className="logout">
-            <button className="logout-btn">Logout</button>
+            <button className="logout-btn" onClick={logoutUser}>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>

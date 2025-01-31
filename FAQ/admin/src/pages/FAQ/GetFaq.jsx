@@ -3,22 +3,32 @@ import FAQContainer from "../../components/FAQContainer";
 import Searchbar from "../../components/Searchbar";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
 
-const FAQ = ({ faqdata }) => {
-  // ✅ Move state inside the component
-  const [searchText, setSearchText] = useState(""); // User input
-  const [category, setCategory] = useState(""); // Selected category
-  const [data, setFaqData] = useState([]); // FAQ list
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get("/admin/faq");
+    console.log(data);
+    return { faqData: data }; // Returning fetched FAQ data
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return { faqData: [] }; // Return empty array in case of error
+  }
+};
 
-  // ✅ Get initial data from loader
-  const loaderData = faqdata;
+const GetFaq = () => {
+  const { faqData } = useLoaderData();
+  // Move state inside the component
+  const [searchText, setSearchText] = useState("");
+  const [category, setCategory] = useState("");
+  const [data, setFaqData] = useState(faqData?.getall || []);
 
-  // ✅ Fetch FAQ function (runs when searchText/category changes)
+  // Fetch FAQ function (runs when searchText/category changes)
   const fetchFAQs = async () => {
     try {
       console.log(searchText);
       const { data } = await customFetch.get("/admin/faq", {
-        params: { words: searchText, category: category }, // ✅ Correct variable names
+        params: { words: searchText, category: category },
       });
       setFaqData(data);
     } catch (error) {
@@ -49,4 +59,4 @@ const FAQ = ({ faqdata }) => {
   );
 };
 
-export default FAQ;
+export default GetFaq;

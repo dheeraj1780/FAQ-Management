@@ -61,7 +61,7 @@ const EditFAQ = () => {
             placeholder="Enter FAQ content"
           />
         </div>
-        <CategoryDropdown categories={categories} existed={faq.categoryId} />
+        <CategoryDropdown categories={categories} existed={faq.categoryName} />
         <div className="form-actions">
           <SubmitBtn />
         </div>

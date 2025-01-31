@@ -12,10 +12,11 @@ const QuillEditor = ({ content, setContent, placeholder }) => {
         theme: "snow",
         modules: {
           toolbar: [
+            [{ direction: "ltr" }, { direction: "rtl" }],
             [{ header: [1, 2, false] }],
             ["bold", "italic", "underline", "strike"],
             [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "image"],
+            ["image"],
             ["clean"],
           ],
         },

@@ -1,6 +1,6 @@
 export { default as Login } from "./login";
 export { default as Categories } from "./Categories/GetCategory";
-export { default as FAQ } from "./FAQ/GetFaq";
+export { default as GetFaq } from "./FAQ/GetFaq";
 export { default as Dashboard } from "./dashboard";
 export { default as HomeLayout } from "./homeLayout";
 export { default as Error } from "./error";
@@ -8,5 +8,3 @@ export { default as AddFAQ } from "./FAQ/AddFAQ";
 export { default as EditFAQ } from "./FAQ/EditFAQ";
 export { default as EditCategory } from "./Categories/EditCategory";
 export { default as AddCategory } from "./Categories/AddCategory";
-export { default as DeleteCategory } from "./Categories/DeleteCategory";
-export { default as DeleteFaq } from "./FAQ/DeleteFaq";
