@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-const CategoryDropdown = ({ categories, set }) => {
-  const [selectedCategory, setSelectedCategory] = useState("");
+const CategoryDropdown = ({ categories, existed = "", set = () => {} }) => {
+  const [selectedCategory, setSelectedCategory] = useState(existed);
+
+  useEffect(() => {
+    setSelectedCategory(existed);
+  }, [existed]);
 
   return (
     <div className="form-group">

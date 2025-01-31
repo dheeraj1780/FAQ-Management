@@ -9,5 +9,6 @@ export const action = async ({ params }) => {
   } catch (error) {
     toast.error(error?.response?.data?.msg);
   }
+  window.dispatchEvent(new Event("faq-updated"));
   return redirect("/dashboard");
 };

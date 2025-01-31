@@ -10,6 +10,7 @@ import {
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { useCategoryContext } from "../dashboard";
+import { redirect } from "react-router-dom";
 
 export const loader = async ({ params }) => {
   try {
@@ -22,6 +23,7 @@ export const loader = async ({ params }) => {
 };
 
 export const action = async ({ request, params }) => {
+  console.log("EditFAQ action triggered"); // Debugging
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
@@ -45,7 +47,7 @@ const EditFAQ = () => {
 
   return (
     <Wrapper>
-      <Form>
+      <Form method="post">
         <h2>{"Edit FAQ"}</h2>
         <FormRow
           type="text"
@@ -61,7 +63,12 @@ const EditFAQ = () => {
             placeholder="Enter FAQ content"
           />
         </div>
-        <CategoryDropdown categories={categories} existed={faq.categoryName} />
+        <input type="hidden" name="answer" value={content} />
+        <CategoryDropdown
+          categories={categories}
+          existed={faq.categoryName}
+          set={() => {}}
+        />
         <div className="form-actions">
           <SubmitBtn />
         </div>

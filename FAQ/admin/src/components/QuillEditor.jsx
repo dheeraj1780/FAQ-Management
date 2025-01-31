@@ -30,12 +30,21 @@ const QuillEditor = ({ content, setContent, placeholder }) => {
 
       quillInstance.current = quill; // Save the Quill instance for future use
     }
+  }, [setContent, placeholder]); // Depend on setContent and placeholder
 
-    // If content changes, set it in Quill editor
-    if (content && quillInstance.current) {
-      quillInstance.current.root.innerHTML = content; // Set the new content
+  useEffect(() => {
+    if (
+      quillInstance.current &&
+      content !== quillInstance.current.root.innerHTML
+    ) {
+      const quill = quillInstance.current;
+      const selection = quill.getSelection(); // Get current cursor position
+      quill.clipboard.dangerouslyPasteHTML(content); // Set the content
+      if (selection) {
+        quill.setSelection(selection.index, selection.length); // Restore cursor position
+      }
     }
-  }, [content, setContent, placeholder]); // Depend on content and placeholder
+  }, [content]);
 
   return <div ref={editorRef} style={{ height: "300px" }}></div>;
 };

@@ -19,6 +19,7 @@ const FAQ = ({ faqdata }) => {
       const { data } = await customFetch.get("/user/faq", {
         params: { words: searchText, category: category }, // ✅ Correct variable names
       });
+      console.log(data);
       setFaqData(data);
     } catch (error) {
       toast.error(error?.response?.data?.msg);
@@ -38,8 +39,8 @@ const FAQ = ({ faqdata }) => {
     <>
       <Searchbar setSearchText={setSearchText} setCategory={setCategory} />
       <>
-        {data?.getall?.length > 0 ? (
-          data.getall.map((faq) => <FAQContainer key={faq._id} {...faq} />)
+        {data?.faq?.length > 0 ? (
+          data.faq.map((faq) => <FAQContainer key={faq._id} {...faq} />)
         ) : (
           <p>No FAQs found.</p>
         )}
