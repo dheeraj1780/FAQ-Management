@@ -38,6 +38,6 @@ export const getAllFAQ = async (req, res) => {
       { answer: { $regex: words, $options: "i" } },
     ];
   }
-  const getall = await FAQModel.find(search);
-  res.status(StatusCodes.OK).json({ getall });
+  const faq = await FAQModel.find(search);
+  res.status(StatusCodes.OK).json({ faq });
 };
