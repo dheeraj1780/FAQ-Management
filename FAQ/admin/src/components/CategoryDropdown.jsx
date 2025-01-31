@@ -14,10 +14,6 @@ const CategoryDropdown = ({ categories, set }) => {
           setSelectedCategory(e.target.value);
           set(e.target.value);
         }}
-        onChange={(e) => {
-          setSelectedCategory(e.target.value);
-          set(e.target.value);
-        }}
         className="form-select"
       >
         <option value="">Select a Category</option>

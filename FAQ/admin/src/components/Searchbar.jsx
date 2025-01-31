@@ -19,19 +19,6 @@ const SearchBar = ({ setSearchText, setCategory }) => {
             onChange={(e) => setSearchText(e.target.value)} // Update searchText in parent
           />
         </div>
-
-        {/* <div className="buttons-container">
-            <button type="submit" className="btn search-btn">
-              Search
-            </button>
-            <button
-              type="button"
-              className="btn reset-btn"
-              onClick={handleReset}
-            >
-              Reset
-            </button>
-          </div> */}
       </div>
     </Wrapper>
   );
