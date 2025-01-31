@@ -11,8 +11,6 @@ import {
   AddCategory,
   EditFAQ,
   EditCategory,
-  DeleteCategory,
-  DeleteFaq,
 } from "./pages";
 
 //actions

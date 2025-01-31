@@ -1,18 +1,19 @@
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Homepage, Questions, ViewQuestion } from "./pages";
+import { Dashboard, FAQ, HomeLayout, Error } from "./pages";
+
+//loaders
+import { loader as dashboardLoader } from "./pages/dashboard";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <HomeLayout />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
-        element: <Questions />,
-      },
-      {
-        path: "view",
-        element: <ViewQuestion />,
+        element: <Dashboard />,
+        loader: dashboardLoader,
       },
     ],
   },
