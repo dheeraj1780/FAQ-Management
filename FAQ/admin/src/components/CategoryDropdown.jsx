@@ -11,7 +11,7 @@ const CategoryDropdown = ({ categories, existed, set }) => {
       <label htmlFor="category">Category</label>
       <select
         id="category"
-        name="categoryId"
+        name="categoryName"
         value={selectedCategory}
         onChange={(e) => {
           setSelectedCategory(e.target.value);
@@ -24,7 +24,7 @@ const CategoryDropdown = ({ categories, existed, set }) => {
           Select a Category
         </option>
         {categories.map((category) => (
-          <option key={category.id} value={category._id}>
+          <option key={category.id} value={category.name}>
             {category.name}
           </option>
         ))}
