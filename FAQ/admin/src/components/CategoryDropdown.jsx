@@ -8,7 +8,7 @@ const CategoryDropdown = ({ categories, set }) => {
       <label htmlFor="category">Category</label>
       <select
         id="category"
-        name="categoryId"
+        name="categoryName"
         value={selectedCategory}
         onChange={(e) => {
           setSelectedCategory(e.target.value);
