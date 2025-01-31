@@ -26,10 +26,10 @@ export const deleteFAQ = async (req, res) => {
 
 export const getAllFAQ = async (req, res) => {
   const { category, words } = req.query;
+  console.log(category);
   const search = {};
   if (category) {
-    const categoryId = await CategoryModel.findOne({ name: category });
-    search.categoryId = categoryId._id;
+    search.categoryName = category;
   }
 
   if (words) {

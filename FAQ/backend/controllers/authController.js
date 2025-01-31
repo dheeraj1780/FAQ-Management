@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   const user = await AdminModel.findOne({ username: req.body.username });
   console.log(req.body.username);
   console.log(user);
-  console.log(req.body.password);  //const user = await AdminModel.find({});
+  console.log(req.body.password); //const user = await AdminModel.find({});
 
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
@@ -17,7 +17,7 @@ export const login = async (req, res) => {
 
   if (!isValidUser) throw new UnauthenticatedError("invalid credentials");
 
-  const token = createJWT({ userId: user._id, role: user.role });
+  const token = createJWT({ userId: user._id, username: user.username });
 
   const oneDay = 1000 * 60 * 60 * 24;
 

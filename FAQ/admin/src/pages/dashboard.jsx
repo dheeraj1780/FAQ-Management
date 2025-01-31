@@ -1,5 +1,10 @@
-import React, { createContext, useContext } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+import React, { createContext, useContext, useEffect } from "react";
+import {
+  Outlet,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { NavBar, SideBar } from "../components";
 import Wrapper from "../assets/wrappers/Dashboard";
 import customFetch from "../utils/customFetch";
@@ -15,27 +20,41 @@ export const loader = async ({ request }) => {
     return error;
   }
 };
-
+const DashboardContext = createContext();
 const categoryContext = createContext();
 
 const dashboard = () => {
   const { data } = useLoaderData();
   const { categories } = data;
+  const navigate = useNavigate();
+
+  const logoutUser = async () => {
+    navigate("/");
+    await customFetch.get("/auth/logout");
+    toast.success("succesfully logged out");
+  };
 
   return (
-    <categoryContext.Provider value={{ categories }}>
-      <Wrapper>
-        <NavBar />
-        <div className="dashboard-content">
-          <SideBar />
-          <div className="main-content">
-            <Outlet />
+    <DashboardContext.Provider
+      value={{
+        logoutUser,
+      }}
+    >
+      <categoryContext.Provider value={{ categories }}>
+        <Wrapper>
+          <NavBar />
+          <div className="dashboard-content">
+            <SideBar />
+            <div className="main-content">
+              <Outlet />
+            </div>
           </div>
-        </div>
-      </Wrapper>
-    </categoryContext.Provider>
+        </Wrapper>
+      </categoryContext.Provider>
+    </DashboardContext.Provider>
   );
 };
 
+export const useDashboardContext = () => useContext(DashboardContext);
 export const useCategoryContext = () => useContext(categoryContext);
 export default dashboard;

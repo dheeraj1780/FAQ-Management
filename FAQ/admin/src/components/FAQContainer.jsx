@@ -8,7 +8,7 @@ const FAQContainer = ({
   _id,
   question,
   answer,
-  categoryId,
+  categoryName,
   createdAt,
   updatedAt,
 }) => {
@@ -34,8 +34,8 @@ const FAQContainer = ({
               className="faq-answer"
               dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
             />
-            <div className="faq-meta">
-              <span className="faq-category">Category: {categoryId}</span>
+            <div className="faq-meta">  
+              <span className="faq-category">Category: {categoryName}</span>
               <div className="faq-timestamps">
                 <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
                 <span>
