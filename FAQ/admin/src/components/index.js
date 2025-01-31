@@ -7,3 +7,4 @@ export { default as CategoryDropdown } from "./CategoryDropdown";
 export { default as CategoryContainer } from "./CategoryContainer";
 export { default as FAQContainer } from "./FAQContainer";
 export { default as Searchbar } from "./Searchbar";
+export { default as CountContainer } from "./CountContainer";

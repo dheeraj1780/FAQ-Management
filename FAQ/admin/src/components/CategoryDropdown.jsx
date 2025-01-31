@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const CategoryDropdown = ({ categories, set }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  console.log(selectedCategory);
 
   return (
     <div className="form-group">

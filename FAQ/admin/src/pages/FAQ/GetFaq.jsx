@@ -1,60 +1,62 @@
 import React, { useEffect, useState } from "react";
 import FAQContainer from "../../components/FAQContainer";
 import Searchbar from "../../components/Searchbar";
-import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
-import { useLoaderData } from "react-router-dom";
-
-export const loader = async () => {
-  try {
-    const { data } = await customFetch.get("/admin/faq");
-    console.log(data);
-    return { faqData: data }; // Returning fetched FAQ data
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return { faqData: [] }; // Return empty array in case of error
-  }
-};
+import { useDashboardContext } from "../dashboard"; // Import context
+import { CountContainer } from "../../components";
 
 const GetFaq = () => {
-  const { faqData } = useLoaderData();
-  // Move state inside the component
-  const [searchText, setSearchText] = useState("");
-  const [category, setCategory] = useState("");
-  const [data, setFaqData] = useState(faqData?.getall || []);
+  const { faq } = useDashboardContext(); // Get faq data from context
+  const [searchText, setSearchText] = useState(""); // Search text state
+  const [category, setCategory] = useState(""); // Category filter state
+  const [filteredFaqs, setFilteredFaqs] = useState(faq); // Filtered FAQ data
 
-  // Fetch FAQ function (runs when searchText/category changes)
-  const fetchFAQs = async () => {
-    try {
-      console.log(searchText);
-      const { data } = await customFetch.get("/admin/faq", {
-        params: { words: searchText, category: category },
-      });
-      setFaqData(data);
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
+  console.log(category);
+  console.log(searchText);
+  console.log(faq);
+  // Filter FAQs based on searchText and category
+  const filterFaqs = () => {
+    let filteredData = [...faq];
+
+    // Filter by searchText (check if any faq title or description contains the searchText)
+    if (searchText) {
+      filteredData = filteredData.filter(
+        (faqItem) =>
+          faqItem.title.toLowerCase().includes(searchText.toLowerCase()) ||
+          faqItem.description.toLowerCase().includes(searchText.toLowerCase())
+      );
     }
+
+    // Filter by category (only show faqs that match the selected category)
+    if (category) {
+      filteredData = filteredData.filter(
+        (faqItem) => faqItem.category === category
+      );
+    }
+
+    setFilteredFaqs(filteredData); // Set the filtered FAQ data
   };
 
-  // Debounced Effect: Wait 300ms after user stops typing
+  // Debounced Effect: Wait 300ms after user stops typing to apply filtering
   useEffect(() => {
     const timeout = setTimeout(() => {
-      fetchFAQs();
+      filterFaqs(); // Call filter function after debounce delay
     }, 300);
 
     return () => clearTimeout(timeout);
-  }, [searchText, category]); // Runs when user types or changes category
+  }, [searchText, category]); // Run filter when searchText or category changes
 
   return (
     <>
+      <CountContainer />
       <Searchbar setSearchText={setSearchText} setCategory={setCategory} />
-      <>
-        {data?.getall?.length > 0 ? (
-          data.getall.map((faq) => <FAQContainer key={faq._id} {...faq} />)
+      <div>
+        {filteredFaqs.length > 0 ? (
+          filteredFaqs.map((faq) => <FAQContainer key={faq._id} {...faq} />)
         ) : (
           <p>No FAQs found.</p>
         )}
-      </>
+      </div>
     </>
   );
 };
