@@ -23,7 +23,6 @@ import { action as deleteCategoryAction } from "./pages/Categories/DeleteCategor
 import { action as deleteFaqAction } from "./pages/FAQ/DeleteFaq";
 
 //loaders
-import { loader as getAllFaqLoader } from "./pages/FAQ/GetFaq";
 import { loader as dashboardLoader } from "./pages/dashboard";
 import { loader as editFaqLoader } from "./pages/FAQ/EditFAQ";
 import { loader as editCategoryLoader } from "./pages/Categories/EditCategory";
@@ -47,7 +46,6 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <FAQ />,
-            loader: getAllFaqLoader,
           },
           {
             path: "addFaq",

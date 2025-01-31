@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/FAQContainer";
+import { FaChevronRight } from "react-icons/fa";
 import { Link, Form } from "react-router-dom";
 import DOMPurify from "dompurify";
 
@@ -24,7 +25,7 @@ const FAQContainer = ({
         <div className="faq-header" onClick={toggleAnswer}>
           <h3 className="faq-question">{question}</h3>
           <span className={`arrow ${isExpanded ? "expanded" : ""}`}>
-            {isExpanded ? "▼" : "▶"}
+            {isExpanded ? <FaChevronRight /> : <FaChevronRight />}
           </span>
         </div>
         {isExpanded && (
