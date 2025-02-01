@@ -60,6 +60,10 @@ export const deleteFAQ = async (req, res) => {
 };
 
 export const getAllFAQ = async (req, res) => {
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit;
+
   const { category, words } = req.query;
   console.log(category);
 
@@ -88,6 +92,9 @@ export const getAllFAQ = async (req, res) => {
     },
     { $unwind: "$categoryDetails" }, // Convert array to object
     {
+      $sort: { updatedAt: -1 },
+    },
+    {
       $project: {
         question: 1,
         answer: 1,
@@ -99,11 +106,14 @@ export const getAllFAQ = async (req, res) => {
         updatedAt: 1,
       },
     },
-  ]);
+  ])
+    .skip(skip)
+    .limit(limit);
 
   console.log(faq);
   // Get the total count
   const totalFaq = await FAQModel.countDocuments(matchQuery);
+  const numofPages = Math.ceil(totalFaq / limit);
 
-  res.status(200).json({ totalFaq, faq });
+  res.status(200).json({ totalFaq, numofPages, currentPage: page, faq });
 };
