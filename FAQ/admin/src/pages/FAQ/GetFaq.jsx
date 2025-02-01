@@ -11,7 +11,7 @@ const GetFaq = () => {
   const [searchText, setSearchText] = useState(""); // Search text state
   const [category, setCategory] = useState(""); // Category filter state
   const [filteredFaqs, setFilteredFaqs] = useState(faq); // Filtered FAQ data
-
+  console.log(category);
   // Function to fetch latest FAQs
   const fetchFaqs = async () => {
     try {
@@ -38,7 +38,7 @@ const GetFaq = () => {
     // Filter by category (only show faqs that match the selected category)
     if (category) {
       filteredData = filteredData.filter(
-        (faqItem) => faqItem.categoryId === category
+        (faqItem) => faqItem.categoryDetails._id === category
       );
     }
 

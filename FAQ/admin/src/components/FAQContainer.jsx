@@ -9,16 +9,13 @@ const FAQContainer = ({
   _id,
   question,
   answer,
-  categoryId,
+  categoryDetails,
   createdAt,
   updatedAt,
 }) => {
   //sanitizing answer
   const sanitizedAnswer = DOMPurify.sanitize(answer);
   const [isExpanded, setIsExpanded] = useState(false);
-  const { categories } = useCategoryContext();
-  const categoryName =
-    categories.find((cat) => cat._id === categoryId)?.name || "Unknown";
 
   const toggleAnswer = () => {
     setIsExpanded((prev) => !prev);
@@ -39,7 +36,9 @@ const FAQContainer = ({
               dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
             />
             <div className="faq-meta">
-              <span className="faq-category">Category: {categoryName}</span>
+              <span className="faq-category">
+                Category: {categoryDetails.name}
+              </span>
               <div className="faq-timestamps">
                 <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
                 <span>
