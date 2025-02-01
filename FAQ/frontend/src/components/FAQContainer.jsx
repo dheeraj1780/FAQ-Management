@@ -3,7 +3,7 @@ import Wrapper from "../assets/wrappers/FAQContainer";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import DOMPurify from "dompurify";
 
-const FAQContainer = ({ _id, question, answer, categoryName }) => {
+const FAQContainer = ({ _id, question, answer, categoryDetails }) => {
   //sanitizing answer
   const sanitizedAnswer = DOMPurify.sanitize(answer);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -29,7 +29,7 @@ const FAQContainer = ({ _id, question, answer, categoryName }) => {
           </div>
         )}
         <div className="faq-meta">
-          <span className="faq-category">Category: {categoryName}</span>
+          <span className="faq-category">Category: {categoryDetails.name}</span>
         </div>
       </div>
     </Wrapper>

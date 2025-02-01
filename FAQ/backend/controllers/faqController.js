@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import CategoryModel from "../models/CategoryModel.js";
 import FAQModel from "../models/FAQModel.js";
 import { StatusCodes } from "http-status-codes";
@@ -8,8 +9,42 @@ export const createFAQ = async (req, res) => {
 };
 
 export const getFAQ = async (req, res) => {
-  const faq = await FAQModel.findById(req.params.id);
-  res.status(StatusCodes.OK).json({ faq });
+  const { id } = req.params;
+
+  // Convert ID to ObjectId
+  const objectId = new mongoose.Types.ObjectId(id);
+
+  // Find FAQ by ID and join with categories
+  const faq = await FAQModel.aggregate([
+    { $match: { _id: objectId } }, // Match the specific FAQ
+    {
+      $lookup: {
+        from: "categories", // Collection to join
+        localField: "categoryId", // Field in FAQModel
+        foreignField: "_id", // Field in CategoryModel
+        as: "categoryDetails", // Output field
+      },
+    },
+    { $unwind: "$categoryDetails" }, // Convert array to object
+    {
+      $project: {
+        question: 1,
+        answer: 1,
+        categoryDetails: {
+          _id: "$categoryDetails._id", // Include category ID
+          name: "$categoryDetails.name", // Include category name
+        },
+        createdAt: 1,
+        updatedAt: 1,
+      },
+    },
+  ]);
+
+  if (!faq || faq.length === 0) {
+    return res.status(404).json({ message: "FAQ not found" });
+  }
+
+  res.status(200).json({ faq: faq[0] }); // Return single FAQ object
 };
 
 export const updateFAQ = async (req, res) => {
@@ -27,18 +62,48 @@ export const deleteFAQ = async (req, res) => {
 export const getAllFAQ = async (req, res) => {
   const { category, words } = req.query;
   console.log(category);
-  const search = {};
-  if (category) {
-    search.categoryName = category;
-  }
 
+  // Build search query
+  const matchQuery = {};
+  if (category) {
+    matchQuery.categoryId = new mongoose.Types.ObjectId(category); // Convert to ObjectId
+  }
   if (words) {
-    search.$or = [
+    matchQuery.$or = [
       { question: { $regex: words, $options: "i" } },
       { answer: { $regex: words, $options: "i" } },
     ];
   }
-  const faq = await FAQModel.find(search);
-  const totalFaq = await FAQModel.countDocuments(search);
-  res.status(StatusCodes.OK).json({ totalFaq, faq });
+
+  // Aggregate with $lookup
+  const faq = await FAQModel.aggregate([
+    { $match: matchQuery }, // Apply filters
+    {
+      $lookup: {
+        from: "categories", // Collection to join
+        localField: "categoryId", // Field in FAQModel
+        foreignField: "_id", // Field in CategoryModel
+        as: "categoryDetails", // Output field
+      },
+    },
+    { $unwind: "$categoryDetails" }, // Convert array to object
+    {
+      $project: {
+        question: 1,
+        answer: 1,
+        categoryDetails: {
+          _id: "$categoryDetails._id", // Include category ID
+          name: "$categoryDetails.name", // Include category name
+        },
+        createdAt: 1,
+        updatedAt: 1,
+      },
+    },
+  ]);
+
+  console.log(faq);
+  // Get the total count
+  const totalFaq = await FAQModel.countDocuments(matchQuery);
+
+  res.status(200).json({ totalFaq, faq });
 };
