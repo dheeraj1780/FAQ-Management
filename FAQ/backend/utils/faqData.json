@@ -1,0 +1,193 @@
+[
+  {
+    "question": "What is the difference between a stack and a queue?",
+    "answer": "A stack follows LIFO (Last In, First Out) order, while a queue follows FIFO (First In, First Out) order.",
+    "categoryId": "679de091da165c628d70615b"
+  },
+  {
+    "question": "What is the purpose of a linked list?",
+    "answer": "A linked list is a dynamic data structure where elements are linked using pointers, allowing efficient insertions and deletions.",
+    "categoryId": "679de091da165c628d70615b"
+  },
+  {
+    "question": "What are the different types of machine learning?",
+    "answer": "Machine learning is classified into supervised learning, unsupervised learning, and reinforcement learning.",
+    "categoryId": "679de091da165c628d70614b"
+  },
+  {
+    "question": "What is an API?",
+    "answer": "An API (Application Programming Interface) allows different software applications to communicate with each other.",
+    "categoryId": "679de091da165c628d706157"
+  },
+  {
+    "question": "What is the difference between HTTP and HTTPS?",
+    "answer": "HTTPS is a secure version of HTTP that encrypts data using SSL/TLS.",
+    "categoryId": "679de091da165c628d706148"
+  },
+  {
+    "question": "What is recursion?",
+    "answer": "Recursion is a programming technique where a function calls itself to solve a smaller instance of the problem.",
+    "categoryId": "679de091da165c628d70615b"
+  },
+  {
+    "question": "What is the difference between a process and a thread?",
+    "answer": "A process is an independent execution unit, while a thread is a smaller, lightweight unit within a process.",
+    "categoryId": "679de091da165c628d70616d"
+  },
+  {
+    "question": "What is an operating system?",
+    "answer": "An operating system is software that manages hardware and software resources and provides common services for computer programs.",
+    "categoryId": "679de091da165c628d70616d"
+  },
+  {
+    "question": "What is a deadlock in operating systems?",
+    "answer": "A deadlock occurs when two or more processes are waiting for each other to release resources, leading to an indefinite wait.",
+    "categoryId": "679de091da165c628d70616d"
+  },
+  {
+    "question": "What is cloud computing?",
+    "answer": "Cloud computing provides on-demand access to computing resources over the internet.",
+    "categoryId": "679de091da165c628d706149"
+  },
+  {
+    "question": "What is a database?",
+    "answer": "A database is an organized collection of data that can be accessed, managed, and updated.",
+    "categoryId": "679de091da165c628d706160"
+  },
+  {
+    "question": "What is normalization in databases?",
+    "answer": "Normalization is the process of organizing a database to reduce redundancy and improve data integrity.",
+    "categoryId": "679de091da165c628d706160"
+  },
+  {
+    "question": "What is artificial intelligence?",
+    "answer": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines to perform tasks like learning, reasoning, and problem-solving.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is the Turing Test?",
+    "answer": "The Turing Test evaluates a machine’s ability to exhibit intelligent behavior indistinguishable from that of a human.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is an algorithm?",
+    "answer": "An algorithm is a step-by-step procedure to solve a problem or perform a computation.",
+    "categoryId": "679de091da165c628d70615b"
+  },
+  {
+    "question": "What is a neural network?",
+    "answer": "A neural network is a machine learning model inspired by the structure of the human brain, used for pattern recognition and deep learning tasks.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is natural language processing?",
+    "answer": "Natural Language Processing (NLP) enables computers to understand, interpret, and generate human language.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is the difference between deep learning and machine learning?",
+    "answer": "Machine learning involves training models using algorithms, while deep learning uses multi-layered neural networks to learn complex patterns.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is an SQL query?",
+    "answer": "An SQL query is a command used to retrieve or manipulate data in a database.",
+    "categoryId": "679de091da165c628d706160"
+  },
+  {
+    "question": "What is blockchain technology?",
+    "answer": "Blockchain is a decentralized digital ledger that records transactions securely across multiple computers.",
+    "categoryId": "679de091da165c628d706151"
+  },
+  {
+    "question": "What is phishing?",
+    "answer": "Phishing is a cyberattack where attackers trick users into providing sensitive information by impersonating a legitimate entity.",
+    "categoryId": "679de091da165c628d706148"
+  },
+  {
+    "question": "What is a firewall?",
+    "answer": "A firewall is a network security system that monitors and controls incoming and outgoing traffic based on predefined security rules.",
+    "categoryId": "679de091da165c628d706148"
+  },
+  {
+    "question": "What is big data analytics?",
+    "answer": "Big data analytics involves examining large datasets to uncover patterns, correlations, and trends.",
+    "categoryId": "679de091da165c628d706154"
+  },
+  {
+    "question": "What is the difference between symmetric and asymmetric encryption?",
+    "answer": "Symmetric encryption uses the same key for encryption and decryption, while asymmetric encryption uses a public and a private key.",
+    "categoryId": "679de091da165c628d706148"
+  },
+  {
+    "question": "What is a chatbot?",
+    "answer": "A chatbot is an AI-based program that simulates human conversation through text or voice interactions.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is reinforcement learning?",
+    "answer": "Reinforcement learning is a type of machine learning where an agent learns by interacting with its environment and receiving rewards or penalties.",
+    "categoryId": "679de091da165c628d70614b"
+  },
+  {
+    "question": "What is the Internet of Things (IoT)?",
+    "answer": "IoT refers to the interconnection of physical devices that collect and exchange data over the internet.",
+    "categoryId": "679de091da165c628d706152"
+  },
+  {
+    "question": "What is quantum computing?",
+    "answer": "Quantum computing uses quantum mechanics principles to perform complex calculations faster than classical computers.",
+    "categoryId": "679de091da165c628d706171"
+  },
+
+  {
+    "question": "What are the different types of sorting algorithms?",
+    "answer": "Sorting algorithms include Bubble Sort, Merge Sort, Quick Sort, Heap Sort, and Radix Sort, each with different time complexities.",
+    "categoryId": "679de091da165c628d70615c"
+  },
+  {
+    "question": "What is the difference between supervised and unsupervised learning?",
+    "answer": "Supervised learning uses labeled data, whereas unsupervised learning finds patterns in unlabeled data.",
+    "categoryId": "679de091da165c628d70614c"
+  },
+  {
+    "question": "What is Augmented Reality (AR)?",
+    "answer": "Augmented Reality enhances the real-world environment with digital overlays using AR devices like HoloLens and smartphones.",
+    "categoryId": "679de091da165c628d706159"
+  },
+  {
+    "question": "How does Automated Reasoning work?",
+    "answer": "Automated reasoning uses logic-based algorithms to solve problems and prove mathematical theorems.",
+    "categoryId": "679de091da165c628d706175"
+  },
+  {
+    "question": "What are the key components of a Big Data ecosystem?",
+    "answer": "Big Data ecosystems include Hadoop, Spark, NoSQL databases, and cloud-based storage solutions.",
+    "categoryId": "679de091da165c628d706154"
+  },
+  {
+    "question": "What is Bioinformatics?",
+    "answer": "Bioinformatics combines biology, computing, and statistics to analyze and interpret biological data.",
+    "categoryId": "679de091da165c628d70616f"
+  },
+  {
+    "question": "How does Blockchain ensure security?",
+    "answer": "Blockchain uses cryptographic hashing and decentralized consensus to provide tamper-proof transactions.",
+    "categoryId": "679de091da165c628d706151"
+  },
+  {
+    "question": "What are the benefits of Cloud Computing?",
+    "answer": "Cloud Computing offers scalability, cost-effectiveness, flexibility, and disaster recovery options.",
+    "categoryId": "679de091da165c628d706149"
+  },
+  {
+    "question": "What is lexical analysis in Compiler Design?",
+    "answer": "Lexical analysis converts source code into tokens, which are processed by the syntax analyzer.",
+    "categoryId": "679de091da165c628d70616d"
+  },
+  {
+    "question": "What are the main components of a CPU?",
+    "answer": "A CPU consists of the ALU, Control Unit, and registers, which execute instructions and process data.",
+    "categoryId": "679de091da165c628d706163"
+  }
+]

@@ -18,7 +18,7 @@ const CategoryDropdown = ({ categories, set }) => {
       >
         <option value="">Select a Category</option>
         {categories.map((category) => (
-          <option key={category._id} value={category.name}>
+          <option key={category._id} value={category._id}>
             {category.name}
           </option>
         ))}

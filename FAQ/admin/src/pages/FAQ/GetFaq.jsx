@@ -38,7 +38,7 @@ const GetFaq = () => {
     // Filter by category (only show faqs that match the selected category)
     if (category) {
       filteredData = filteredData.filter(
-        (faqItem) => faqItem.categoryName === category
+        (faqItem) => faqItem.categoryId === category
       );
     }
 

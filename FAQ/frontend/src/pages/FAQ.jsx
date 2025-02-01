@@ -10,6 +10,7 @@ const FAQ = ({ faqdata }) => {
   const [category, setCategory] = useState(""); // Selected category
   const [data, setFaqData] = useState([]); // FAQ list
 
+  console.log(category);
   // ✅ Get initial data from loader
   const loaderData = faqdata;
 

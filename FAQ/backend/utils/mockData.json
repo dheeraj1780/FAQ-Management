@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Web Development",
+    "description": "Topics on frontend and backend web technologies."
+  },
+  {
+    "name": "Machine Learning",
+    "description": "Covers supervised, unsupervised learning, and deep learning."
+  },
+  {
+    "name": "Cybersecurity",
+    "description": "Discusses ethical hacking, cryptography, and network security."
+  },
+  {
+    "name": "Cloud Computing",
+    "description": "Focuses on AWS, Azure, and Google Cloud services."
+  },
+  {
+    "name": "Mobile Development",
+    "description": "Covers Android, iOS, and cross-platform app development."
+  },
+  {
+    "name": "Data Science",
+    "description": "Includes data visualization, analysis, and statistical methods."
+  },
+  {
+    "name": "Artificial Intelligence",
+    "description": "Covers AI concepts, neural networks, and applications."
+  },
+  {
+    "name": "Game Development",
+    "description": "Focuses on Unity, Unreal Engine, and game mechanics."
+  },
+  {
+    "name": "Embedded Systems",
+    "description": "Discusses microcontrollers, IoT, and real-time systems."
+  },
+  {
+    "name": "Networking",
+    "description": "Covers network protocols, TCP/IP, and system administration."
+  },
+  {
+    "name": "Operating Systems",
+    "description": "Topics include Windows, Linux, and macOS internals."
+  },
+  {
+    "name": "Blockchain",
+    "description": "Discusses cryptocurrencies, smart contracts, and DApps."
+  },
+  {
+    "name": "Software Testing",
+    "description": "Covers manual, automated, and performance testing."
+  },
+  {
+    "name": "UI/UX Design",
+    "description": "Focuses on user experience and interface design principles."
+  },
+  {
+    "name": "Big Data",
+    "description": "Covers Hadoop, Spark, and large-scale data processing."
+  },
+  {
+    "name": "Computer Vision",
+    "description": "Discusses image processing and deep learning applications."
+  },
+  {
+    "name": "Natural Language Processing",
+    "description": "Covers text analysis and AI-driven language models."
+  },
+  {
+    "name": "DevOps",
+    "description": "Includes CI/CD, Docker, Kubernetes, and automation."
+  },
+  {
+    "name": "Quantum Computing",
+    "description": "Discusses quantum mechanics and computation theories."
+  },
+  {
+    "name": "Augmented Reality",
+    "description": "Covers AR applications and development tools."
+  },
+  {
+    "name": "Virtual Reality",
+    "description": "Discusses VR applications and simulation technologies."
+  },
+  {
+    "name": "Data Structures",
+    "description": "Topics on trees, graphs, and algorithm optimizations."
+  },
+  {
+    "name": "Algorithms",
+    "description": "Covers sorting, searching, and problem-solving techniques."
+  },
+  {
+    "name": "Computer Graphics",
+    "description": "Discusses rendering, modeling, and animation techniques."
+  },
+  {
+    "name": "Edge Computing",
+    "description": "Focuses on real-time processing at the edge devices."
+  },
+  {
+    "name": "Internet of Things",
+    "description": "Discusses smart devices and IoT ecosystems."
+  },
+  {
+    "name": "Database Administration",
+    "description": "Topics on database design, indexing, and optimization."
+  },
+  {
+    "name": "Functional Programming",
+    "description": "Covers Lisp, Haskell, and declarative programming."
+  },
+  {
+    "name": "Microservices Architecture",
+    "description": "Focuses on distributed systems and API design."
+  },
+  {
+    "name": "Computer Architecture",
+    "description": "Discusses processors, memory management, and hardware."
+  },
+  {
+    "name": "Parallel Computing",
+    "description": "Covers multi-threading and distributed computing."
+  },
+  {
+    "name": "Software Engineering",
+    "description": "Topics include SDLC, Agile, and design patterns."
+  },
+  {
+    "name": "Ethical Hacking",
+    "description": "Discusses penetration testing and security vulnerabilities."
+  },
+  {
+    "name": "Digital Forensics",
+    "description": "Covers cybercrime investigation and forensic techniques."
+  },
+  {
+    "name": "Human-Computer Interaction",
+    "description": "Focuses on UI/UX research and interaction design."
+  },
+  {
+    "name": "Embedded AI",
+    "description": "Discusses AI applications in embedded systems."
+  },
+  {
+    "name": "Geospatial Analytics",
+    "description": "Covers GIS, satellite imagery, and spatial data analysis."
+  },
+  {
+    "name": "Digital Signal Processing",
+    "description": "Topics on audio, image, and sensor data processing."
+  },
+  {
+    "name": "Software Development Methodologies",
+    "description": "Covers Agile, Scrum, and Lean methodologies."
+  },
+  {
+    "name": "Compiler Design",
+    "description": "Discusses lexical analysis, parsing, and code generation."
+  },
+  {
+    "name": "Mathematical Computing",
+    "description": "Focuses on numerical analysis and symbolic computation."
+  },
+  {
+    "name": "Bioinformatics",
+    "description": "Covers computational biology and genomics."
+  },
+  {
+    "name": "Distributed Systems",
+    "description": "Focuses on P2P networks, fault tolerance, and scalability."
+  },
+  {
+    "name": "Social Network Analysis",
+    "description": "Discusses network graphs, influencers, and analytics."
+  },
+  {
+    "name": "Data Governance",
+    "description": "Topics on data privacy, compliance, and management."
+  },
+  {
+    "name": "Robotics",
+    "description": "Covers robotic process automation and control systems."
+  },
+  {
+    "name": "Edge AI",
+    "description": "Discusses AI inference on edge devices."
+  },
+  {
+    "name": "Automated Reasoning",
+    "description": "Focuses on logic programming and theorem proving."
+  }
+]
