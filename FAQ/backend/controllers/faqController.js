@@ -39,5 +39,6 @@ export const getAllFAQ = async (req, res) => {
     ];
   }
   const faq = await FAQModel.find(search);
-  res.status(StatusCodes.OK).json({ faq });
+  const totalFaq = await FAQModel.countDocuments(search);
+  res.status(StatusCodes.OK).json({ totalFaq, faq });
 };

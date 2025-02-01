@@ -53,12 +53,12 @@ export const validateCategoryIdParam = withValidationErrors([
 export const validateFAQ = withValidationErrors([
   body("question").notEmpty().withMessage("question is Required"),
   body("answer").notEmpty().withMessage("answer is Required"),
-  body("categoryName")
+  body("categoryId")
     .notEmpty()
-    .withMessage("Category name is required")
+    .withMessage("Category Name is required")
     .custom(async (value) => {
       if (value) {
-        const category = await CategoryModel.findOne({ name: value }); // Find by category name
+        const category = await CategoryModel.findById(value); // Find by category name
         if (!category) {
           throw new NotFoundError(`No category found with name '${value}'`);
         }

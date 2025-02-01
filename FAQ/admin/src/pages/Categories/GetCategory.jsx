@@ -7,7 +7,6 @@ import { useCategoryContext } from "../dashboard";
 
 const Categories = () => {
   const { categories } = useCategoryContext();
-  console.log({ categories });
   return (
     <div>
       {categories.map((category) => {

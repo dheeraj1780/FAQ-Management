@@ -15,6 +15,7 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
+    console.log(data);
     await customFetch.post("/admin/faq", data);
     toast.success("Faq added Successfully");
     return redirect("/dashboard");

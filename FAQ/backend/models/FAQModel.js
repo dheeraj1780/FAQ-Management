@@ -12,9 +12,9 @@ const FAQModel = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    categoryName: {
+    categoryId: {
       // type: String,
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "categories",
       required: true,
       trim: true,

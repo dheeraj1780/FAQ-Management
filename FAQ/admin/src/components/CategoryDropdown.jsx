@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const CategoryDropdown = ({ categories, existed = "", set = () => {} }) => {
   const [selectedCategory, setSelectedCategory] = useState(existed);
-
   useEffect(() => {
     setSelectedCategory(existed);
   }, [existed]);
@@ -12,7 +11,7 @@ const CategoryDropdown = ({ categories, existed = "", set = () => {} }) => {
       <label htmlFor="category">Category</label>
       <select
         id="category"
-        name="categoryName"
+        name="categoryId"
         value={selectedCategory}
         onChange={(e) => {
           setSelectedCategory(e.target.value);
@@ -22,7 +21,7 @@ const CategoryDropdown = ({ categories, existed = "", set = () => {} }) => {
       >
         <option value="">Select a Category</option>
         {categories.map((category) => (
-          <option key={category._id} value={category.name}>
+          <option key={category._id} value={category._id}>
             {category.name}
           </option>
         ))}

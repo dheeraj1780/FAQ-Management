@@ -3,18 +3,22 @@ import Wrapper from "../assets/wrappers/FAQContainer";
 import { FaChevronRight } from "react-icons/fa";
 import { Link, Form } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { useCategoryContext } from "../pages/dashboard";
 
 const FAQContainer = ({
   _id,
   question,
   answer,
-  categoryName,
+  categoryId,
   createdAt,
   updatedAt,
 }) => {
   //sanitizing answer
   const sanitizedAnswer = DOMPurify.sanitize(answer);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { categories } = useCategoryContext();
+  const categoryName =
+    categories.find((cat) => cat._id === categoryId)?.name || "Unknown";
 
   const toggleAnswer = () => {
     setIsExpanded((prev) => !prev);
@@ -34,7 +38,7 @@ const FAQContainer = ({
               className="faq-answer"
               dangerouslySetInnerHTML={{ __html: sanitizedAnswer }}
             />
-            <div className="faq-meta">  
+            <div className="faq-meta">
               <span className="faq-category">Category: {categoryName}</span>
               <div className="faq-timestamps">
                 <span>Created: {new Date(createdAt).toLocaleDateString()}</span>
