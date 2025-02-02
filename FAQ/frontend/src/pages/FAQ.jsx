@@ -1,53 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext } from "react";
 import FAQContainer from "../components/FAQContainer";
 import Searchbar from "../components/SearchBar";
-import customFetch from "../utils/customFetch";
-import { toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
+import PageBtnContainer from "../components/PageBtnContainer";
 
-const FAQ = ({ faqdata }) => {
-  // ✅ Move state inside the component
-  const [searchText, setSearchText] = useState(""); // User input
-  const [category, setCategory] = useState(""); // Selected category
-  const [data, setFaqData] = useState([]); // FAQ list
+const AllFaqsContext = createContext();
 
-  console.log(category);
-  // ✅ Get initial data from loader
-  const loaderData = faqdata;
-
-  // ✅ Fetch FAQ function (runs when searchText/category changes)
-  const fetchFAQs = async () => {
-    try {
-      const { data } = await customFetch.get("/user/faq", {
-        params: { words: searchText, category: category }, // ✅ Correct variable names
-      });
-      console.log(data);
-      setFaqData(data);
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-    }
-  };
-
-  // Debounced Effect: Wait 300ms after user stops typing
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      fetchFAQs();
-    }, 300);
-
-    return () => clearTimeout(timeout);
-  }, [searchText, category]); // Runs when user types or changes category
-
+const FAQ = () => {
+  const { data, searchValues } = useLoaderData();
+  const { totalFaq, numofPages, currentPage, faq } = data;
+  console.log(currentPage);
   return (
-    <>
-      <Searchbar setSearchText={setSearchText} setCategory={setCategory} />
-      <>
-        {data?.faq?.length > 0 ? (
-          data.faq.map((faq) => <FAQContainer key={faq._id} {...faq} />)
+    <AllFaqsContext.Provider value={{ searchValues }}>
+      <Searchbar />
+      <div>
+        {faq.length > 0 ? (
+          faq.map((faq) => <FAQContainer key={faq._id} {...faq} />)
         ) : (
           <p>No FAQs found.</p>
         )}
-      </>
-    </>
+        {numofPages > 1 && (
+          <PageBtnContainer
+            numofPages={numofPages}
+            totalFaq={totalFaq}
+            currentPage={currentPage}
+          />
+        )}
+      </div>
+    </AllFaqsContext.Provider>
   );
 };
 
+export const useAllFaqsContext = () => useContext(AllFaqsContext);
 export default FAQ;

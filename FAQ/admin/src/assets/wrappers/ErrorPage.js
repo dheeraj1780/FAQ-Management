@@ -2,29 +2,50 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #1e1e2f; /* Dark background */
+  color: white;
+  padding: 20px;
+
   img {
-    width: 90vw;
-    max-width: 600px;
+    width: 85vw;
+    max-width: 500px;
     display: block;
     margin-bottom: 2rem;
-    margin-top: -3rem;
+    margin-top: -2rem;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
   }
+
   h3 {
-    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: #00bcd4; /* Cyan accent */
   }
+
   p {
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    color: var(--text-secondary-color);
+    color: #b0bec5; /* Light gray for better readability */
+    max-width: 500px;
   }
+
   a {
-    color: var(--primary-500);
-    text-transform: capitalize;
+    color: #00bcd4;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  a:hover {
+    color: #0097a7;
+    text-decoration: underline;
   }
 `;
 

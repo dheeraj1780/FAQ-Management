@@ -1,4 +1,3 @@
-// CategoryWrapper.js
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -6,13 +5,18 @@ const Wrapper = styled.div`
   margin: 2rem auto;
   padding: 2rem;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    background-color: #f8f8f8;
+  }
   .category-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .category-header {
@@ -22,13 +26,14 @@ const Wrapper = styled.div`
   }
 
   .category-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: #2c3e50;
+    margin: 0;
   }
 
   .category-header p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #7f8c8d;
   }
 
@@ -46,12 +51,12 @@ const Wrapper = styled.div`
   .category-actions {
     margin-top: 12px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
   }
 
   .btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 8px 18px;
+    font-size: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;

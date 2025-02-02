@@ -64,7 +64,6 @@ export const getAllFAQ = async (req, res) => {
   const skip = (page - 1) * limit;
 
   const { category, words } = req.query;
-  console.log(category);
 
   // Build search query
   const matchQuery = {};
@@ -109,7 +108,6 @@ export const getAllFAQ = async (req, res) => {
     .skip(skip)
     .limit(limit);
 
-  console.log(faq);
   // Get the total count
   const totalFaq = await FAQModel.countDocuments(matchQuery);
   const numofPages = Math.ceil(totalFaq / limit);

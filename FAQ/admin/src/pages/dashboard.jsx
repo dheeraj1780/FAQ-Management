@@ -20,6 +20,7 @@ export const loader = async ({ request }) => {
     return { categories: [], faqCount: 0 };
   }
 };
+
 const DashboardContext = createContext();
 const categoryContext = createContext();
 

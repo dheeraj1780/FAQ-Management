@@ -30,7 +30,7 @@ const AddFAQ = () => {
 
   return (
     <Wrapper>
-      <Form method="post" className="form">
+      <Form method="post" className="form-faq">
         <h2>{"Add FAQ"}</h2>
         <FormRow
           type="text"

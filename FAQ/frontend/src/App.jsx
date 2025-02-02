@@ -3,17 +3,16 @@ import { Dashboard, FAQ, HomeLayout, Error } from "./pages";
 
 //loaders
 import { loader as dashboardLoader } from "./pages/dashboard";
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
+    element: <Dashboard />,
     errorElement: <Error />,
+    loader: dashboardLoader,
     children: [
       {
         index: true,
-        element: <Dashboard />,
-        loader: dashboardLoader,
+        element: <FAQ />,
       },
     ],
   },
