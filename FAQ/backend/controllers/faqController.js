@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import CategoryModel from "../models/CategoryModel.js";
 import FAQModel from "../models/FAQModel.js";
 import { StatusCodes } from "http-status-codes";
 

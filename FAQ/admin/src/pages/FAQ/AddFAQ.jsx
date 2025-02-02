@@ -15,7 +15,6 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
-    console.log(data);
     await customFetch.post("/admin/faq", data);
     toast.success("Faq added Successfully");
     return redirect("/dashboard");
@@ -47,7 +46,7 @@ const AddFAQ = () => {
           />
         </div>
         <input type="hidden" name="answer" value={content} />
-        <CategoryDropdown categories={categories} />
+        <CategoryDropdown categories={categories} name="categoryId" />
         <div className="form-actions">
           <SubmitBtn />
         </div>

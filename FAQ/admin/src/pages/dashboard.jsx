@@ -12,7 +12,7 @@ export const loader = async ({ request }) => {
     return {
       categories: categoryData.categories,
       categoryCount: categoryData.categories.length,
-      faqCount: faqData.faq.length,
+      faqCount: faqData.totalFaq,
       faq: faqData.faq,
     };
   } catch (error) {
