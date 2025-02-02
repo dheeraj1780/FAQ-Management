@@ -40,7 +40,6 @@ const EditFAQ = () => {
   const [content, setContent] = useState("");
   const { categories } = useCategoryContext();
   const { faq } = useLoaderData();
-  console.log(faq.categoryDetails.name);
   useEffect(() => {
     setContent(faq.answer || "");
   }, [faq]);
@@ -66,6 +65,7 @@ const EditFAQ = () => {
         <input type="hidden" name="answer" value={content} />
         <CategoryDropdown
           categories={categories}
+          name="categoryId"
           existed={faq.categoryDetails._id}
           set={() => {}}
         />

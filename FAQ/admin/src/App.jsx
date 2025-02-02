@@ -26,6 +26,7 @@ import { action as deleteFaqAction } from "./pages/FAQ/DeleteFaq";
 import { loader as dashboardLoader } from "./pages/dashboard";
 import { loader as editFaqLoader } from "./pages/FAQ/EditFAQ";
 import { loader as editCategoryLoader } from "./pages/Categories/EditCategory";
+import { loader as getAllFaq } from "./pages/FAQ/GetFaq";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <GetFaq />,
+            loader: getAllFaq,
           },
           {
             path: "addFaq",
