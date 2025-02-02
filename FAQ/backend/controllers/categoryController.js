@@ -1,5 +1,6 @@
 import CategoryModel from "../models/CategoryModel.js";
 import { StatusCodes } from "http-status-codes";
+import FAQModel from "../models/FAQModel.js";
 
 export const getAllCategories = async (req, res) => {
   const searchQuery = req.query.search || "";
@@ -26,6 +27,7 @@ export const getCategory = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   const { id } = req.params;
+  await FAQModel.deleteMany({ categoryId: id });
   const removedCategory = await CategoryModel.findByIdAndDelete(id);
 
   if (!removedCategory) {
