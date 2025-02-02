@@ -17,7 +17,7 @@ const FAQContainer = ({ _id, question, answer, categoryDetails }) => {
         <div className="faq-header" onClick={toggleAnswer}>
           <h3 className="faq-question">{question}</h3>
           <span className={`arrow ${isExpanded ? "expanded" : ""}`}>
-            {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
+            {isExpanded ? <FaChevronRight /> : <FaChevronRight />}
           </span>
         </div>
         {isExpanded && (

@@ -7,8 +7,6 @@ const CategoryDropdown = ({
   existed = "",
   set = () => {},
 }) => {
-  console.log(existed);
-  console.log(name);
   return (
     <div className="form-group">
       <label htmlFor="category">Category</label>

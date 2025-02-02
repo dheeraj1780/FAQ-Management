@@ -2,37 +2,54 @@ import React from "react";
 import Wrapper from "../assets/wrappers/Searchbar";
 import CategoryDropdown from "./CategoryDropdown";
 import { useCategoryContext } from "../pages/dashboard";
+import { useAllFaqsContext } from "../pages/FAQ";
+import { Form, useSubmit } from "react-router-dom";
 
-const SearchBar = ({ setSearchText, setCategory }) => {
+const SearchBar = () => {
+  const { searchValues } = useAllFaqsContext();
+  const { words, category } = searchValues;
   const { categories } = useCategoryContext();
+  const submit = useSubmit();
+
+  const debounce = (onChange) => {
+    let timeout;
+    return (e) => {
+      const form = e.currentTarget.form;
+      clearTimeout(timeout);
+      console.log("asd");
+      console.log();
+      timeout = setTimeout(() => {
+        onChange(form);
+      }, 200);
+    };
+  };
+
   return (
     <Wrapper>
-      <div className="search-bar-container">
-        <CategoryDropdown categories={categories} set={setCategory} />
-
-        <div className="input-container">
-          <label htmlFor="search-text">Search</label>
-          <br />
-          <input
-            type="text"
-            placeholder="Search FAQs..."
-            onChange={(e) => setSearchText(e.target.value)} // Update searchText in parent
+      <Form className="search-form">
+        <div className="search-bar-container">
+          <CategoryDropdown
+            categories={categories}
+            onChange={(e) => {
+              submit(e.currentTarget.form);
+            }}
+            existed={category}
           />
-        </div>
 
-        {/* <div className="buttons-container">
-            <button type="submit" className="btn search-btn">
-              Search
-            </button>
-            <button
-              type="button"
-              className="btn reset-btn"
-              onClick={handleReset}
-            >
-              Reset
-            </button>
-          </div> */}
-      </div>
+          <div className="input-container">
+            <label htmlFor="search-text">Search</label>
+            <br />
+            <input
+              name="words"
+              type="text"
+              placeholder="Search FAQs..."
+              onChange={debounce((form) => {
+                submit(form);
+              })}
+            />
+          </div>
+        </div>
+      </Form>
     </Wrapper>
   );
 };

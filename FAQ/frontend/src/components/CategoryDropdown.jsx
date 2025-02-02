@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-const CategoryDropdown = ({ categories, set }) => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-
+const CategoryDropdown = ({
+  categories,
+  name = "category",
+  onChange,
+  existed = "",
+  set = () => {},
+}) => {
   return (
     <div className="form-group">
       <label htmlFor="category">Category</label>
       <select
         id="category"
-        name="categoryId"
-        value={selectedCategory}
-        onChange={(e) => {
-          setSelectedCategory(e.target.value);
-          set(e.target.value);
-        }}
+        name={name}
+        defaultValue={existed}
+        onChange={onChange}
         className="form-select"
       >
         <option value="">Select a Category</option>

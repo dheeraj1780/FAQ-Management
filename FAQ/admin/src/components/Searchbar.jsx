@@ -26,15 +26,17 @@ const SearchBar = () => {
 
   return (
     <Wrapper>
-      <Form className="form">
+      <Form className="search-form">
         <div className="search-bar-container">
-          <CategoryDropdown
-            categories={categories}
-            onChange={(e) => {
-              submit(e.currentTarget.form);
-            }}
-            existed={category}
-          />
+          <div className="search-dropdown">
+            <CategoryDropdown
+              categories={categories}
+              onChange={(e) => {
+                submit(e.currentTarget.form);
+              }}
+              existed={category}
+            />
+          </div>
 
           <div className="input-container">
             <label htmlFor="search-text">Search</label>
